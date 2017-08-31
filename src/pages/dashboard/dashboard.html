@@ -1,0 +1,231 @@
+<!--
+  Generated template for the Dashboard page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="dashboard" color="{{titleColor}}">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dashboard</ion-title>
+    <!--<ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="ios-search"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding ><!--style="background-color:#C6ACD8"-->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="dste">Total Expenditure<br>&#8377; {{expenditure}}/-</div>
+      </ion-col>
+      <ion-col>
+        <div class="dsimg"><img src="assets/images/person.png" class="dsimgp"></div>
+      </ion-col>
+      <ion-col> 
+        <div class="dswb">Wallet Balance<br>&#8377; 200/-</div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="srow">
+      <ion-col>
+        <div class="dsebr">E-bills received<br>{{ebillreceived}}</div>
+      </ion-col>
+      <ion-col>
+        <div class="dsicd">&nbsp;</div>
+      </ion-col>
+      <ion-col>
+        <div class="dsbd">Bills Due<br>{{totalduebill}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="dsp1">&nbsp;</div>
+      </ion-col>
+      <ion-col>
+        <div class="dsp2">{{ billmeuser }}</div>
+      </ion-col>
+      <ion-col>
+        <div class="dsp3">&nbsp;</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="mostrecentbills">
+    <div class="mrbhead">
+      Most Recent Bills
+    </div>
+    <div *ngIf="mostrecentcount == 0" class="emptydata">
+      <!--<button ion-button (click)="makepdf()">Make pdf</button>-->
+      <p><b>There is no recent bills you have.</b></p>
+    </div>
+  <ion-grid class="mrbig1" *ngIf="mostrecentcount == 1">
+    <ion-row class="mrbir1">
+      <ion-col col-4 *ngFor="let m of mostrecent" class="mrbir1ic1" (click)="openBill(m)">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>{{m.billNo}}</p>
+            <p>{{convert(m.buyedAt)}}</p>
+            <p *ngIf="m.amountCurrency == 'INR'">&#8377; {{m.amount}}</p>
+            <p *ngIf="m.amountCurrency == 'USD'">$ {{m.amount}}</p>
+      </ion-col>
+      <!--<ion-col col-4 class="mrbir1ic1">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>Ballistire Road</p>
+            <p>27 jun, 2016</p>
+            <p>$6.4/s</p>
+      </ion-col>
+          <ion-col col-4 class="mrbir1ic2">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>Ballistire Road</p>
+            <p>27 jun, 2016</p>
+            <p>$6.4/s</p>
+      </ion-col>
+          <ion-col col-4 class="mrbir1ic3">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>Ballistire Road</p>
+            <p>27 jun, 2016</p>
+            <p>$6.4/s</p>
+      </ion-col>-->
+    </ion-row>
+  </ion-grid>
+  </div>
+
+
+  <div class="billsdue">
+    <div class="bdhead">
+      Bills Due
+    </div>
+    <div *ngIf="duebillscount == 0" class="emptydata">
+      <p><b>You does not have any due bills.</b></p>
+    </div>
+  <ion-grid class="mrbig1" *ngIf="duebillscount == 1">
+    <ion-row class="mrbir1">
+      <ion-col col-4 *ngFor="let d of duebills" class="mrbir1ic1" (click)="openBill(d)">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>{{d.billNo}}</p>
+            <p>{{convert(d.buyedAt)}}</p>
+            <p *ngIf="d.amountCurrency == 'INR'">&#8377; {{d.amount}}</p>
+            <p *ngIf="d.amountCurrency == 'USD'">$ {{m.amount}}</p>
+      </ion-col>
+      <!--<ion-col col-4 class="mrbir1ic1">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>Ballistire Road</p>
+            <p>27 jun, 2016</p>
+            <p>$6.4/s</p>
+      </ion-col>
+          <ion-col col-4 class="mrbir1ic2">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>Ballistire Road</p>
+            <p>27 jun, 2016</p>
+            <p>$6.4/s</p>
+      </ion-col>
+          <ion-col col-4 class="mrbir1ic3">
+        <img src="assets/images/mcd.png" class="mrbastimg"><br>
+            <p>Ballistire Road</p>
+            <p>27 jun, 2016</p>
+            <p>$6.4/s</p>
+      </ion-col>-->
+    </ion-row>
+  </ion-grid>
+  </div>
+
+
+  <div class="dealsofweek">
+    <div class="dtwhead">
+      Deals of the week
+    </div>
+    <div *ngIf="dealscount == 0" class="emptydata">
+      <p><b>You does not have any deals.</b></p>
+    </div>
+    <div class="dtwbody" *ngIf="dealscount == 1">
+      <ion-card>
+        <ion-card-content>
+          <ol>
+              <li *ngFor="let d of deals">{{d.description}}</li>
+                <!--Use code 'CBfood' to get upto 30% cash back in restaurants</li>
+              <li>Use code 'BMUBER' and get 10% cash back on your ride.</li>
+              <li>Get a burger free at Mc donalds on bill over $6.99</li>-->
+          </ol>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <!--<div class="mostrecentbills">
+    <div class="mrbhead">
+      Most Recent Bills
+    </div>
+    <div class="mrbscroll">
+      <ion-scroll scrollX="true" scrollY="false">
+
+        <ion-card class="mrbic1">
+          <ion-card-content class="mrbicc1">
+            <img src="assets/images/person.png" class="mrbastimg"><br>
+            Ballistire Roads<br>
+            $6.4/s
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="mrbic2">
+          <ion-card-content class="mrbicc2">
+            <img src="assets/images/person.png" class="mrbastimg"><br>
+            Ballistire Road<br>
+            $6.4/s
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="mrbic2">
+          <ion-card-content class="mrbicc2">
+            <img src="assets/images/person.png" class="mrbastimg"><br>
+            Ballistire Road<br>
+            $6.4/s
+          </ion-card-content>
+        </ion-card>
+
+      </ion-scroll>
+    </div>
+  </div>-->
+
+  <!--<ion-card>
+    <ion-card-header>
+      Explore Nearby
+    </ion-card-header>
+
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="cart" item-start></ion-icon>
+        Shopping
+      </button>
+
+      <button ion-item>
+        <ion-icon name="medical" item-start></ion-icon>
+        Hospital
+      </button>
+
+      <button ion-item>
+        <ion-icon name="cafe" item-start></ion-icon>
+        Cafe
+      </button>
+
+      <button ion-item>
+        <ion-icon name="paw" item-start></ion-icon>
+        Dog Park
+      </button>
+
+      <button ion-item>
+        <ion-icon name="beer" item-start></ion-icon>
+        Pub
+      </button>
+
+      <button ion-item>
+        <ion-icon name="planet" item-start></ion-icon>
+        Space
+      </button>
+
+    </ion-list>
+  </ion-card>-->
+</ion-content>

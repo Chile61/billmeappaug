@@ -1,0 +1,108 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+img.menuimg {
+    width: 15%;
+    position: absolute;
+    margin-left: 5%;
+    /* border: solid; */
+    border-radius: 50%;
+    border: 1px solid;
+    padding: 2px;
+    margin-bottom: 5px;
+    margin-right: 5%;
+    margin-top: 4%;
+    float: left;
+    left: 0;
+}
+.menutxt {
+    text-align: center;
+}
+ion-toolbar.toolbar.toolbar-md {
+    background-color: #0372b2;
+    height: 90px;
+}
+.toolbar-background-md {
+    border-color: #0372b2;
+     background: #0372b2; 
+    height: 90px;
+}
+ion-toolbar.toolbar.toolbar-md.menutitle {
+    background-color: #0372b2;
+}
+.toolbar-content.toolbar-content-md {
+    color: #fff;
+}
+ion-header.header.header-md.header-md-newtitle {
+    background-color: #0372b2;
+}
+.toolbar-title-md {
+    color: #fff;
+}
+.divfootermenu {
+    position: relative;
+    bottom: 0;
+    /* margin: 5%; */
+    font-size: medium;
+    color: darkgray;
+    text-align: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    width: 100%;
+    margin-top: 20%;
+}
+.divfootermenu p {
+    font-size: medium;
+    color: darkgray;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+}
+
+/*sidemenu*/
+ion-content.bmmenuic {
+    background-color: rgb(77,127,116);
+}
+ion-content.bmmenuic button.item.item-block.item-md {
+    background-color: rgb(77,127,116);
+    color: #fff;
+    margin: 6px;
+    border-color: rgb(77,127,116);
+}
+ion-content.bmmenuic ion-list.list.list-md {
+    background-color: rgb(77,127,116);
+    margin: 0px;
+}
+.bmmenuic div ion-list.list button .item-inner {
+    border-bottom: 0px;
+    padding: 2px;
+}
+
+/*loadingctrl*/
+.classforspindata .loading-wrapper {
+    background: transparent;
+    box-shadow: 0 0px;
+    border-radius: 30px;
+    padding: 49px;
+}
+.classforspindata div div ion-spinner svg circle {
+    stroke: white;
+}
+.classforspindata ion-spinner.spinner {
+    width: 75px;
+    height: 75px;
+}

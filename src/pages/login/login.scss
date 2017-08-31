@@ -1,0 +1,50 @@
+page-login {
+    ion-row ion-col {
+        text-align: center;
+    }
+    ion-checkbox.chkbx {
+        border: 0px;
+    }
+    div.itmbtn{
+        text-align: center;
+    }
+    div.itmbtn button {
+        margin-top: 4%;
+    }
+    .divimg {
+        text-align: center;
+    }
+    .divimg img {
+        width: 40%;
+        margin-top: 5%;
+    }
+
+    /*logincontent*/
+    ion-content.logincontent.content.content-md {
+        background-image: url(../../assets/images/bg5.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    ion-item.itmeml, ion-item.itmpass {
+        opacity: 0.8;
+        color: darkblue;
+        font-size: 20px;
+        border-radius: 30px;
+        margin-top: 2%;
+    }
+    ion-col.iam {
+        font-size: 20px;
+        font-style: normal;
+        font-family: monospace;
+        font-weight: 600;
+    }
+    /*img.vendor, img.user {
+        background-color: floralwhite;
+        padding: 15px;
+        border-radius: 40px;
+    }*/
+    button.itmbtnlogin {
+        max-width: 100%;
+        width: 80%;
+    }
+}

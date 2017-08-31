@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar class="Profile" color="{{titleColor}}">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Receipt {{navName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+  <ion-card>
+    <ion-card-header>
+      {{navbillNo}}
+    </ion-card-header>
+    <ion-card-content>
+      The Bill {{navbillNo}} is been purchased at {{convert(navbuyedAt)}}.
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <div class="billdiv">
+      <img *ngIf="isImg" src="{{navbillPDF}}" class="billimage" (click)="viewfull()" />
+
+      <img *ngIf="isPdf" src="{{navbillPDFOnlyforPDF}}" class="billimagepdf" (click)="viewpdf1()"/><!--{{navbillPDF}}-->
+    </div>
+    <ion-card-content>
+      <ion-card-title>
+        {{navamountCurrency+' '+navamount }} /-
+      </ion-card-title>
+      <p>
+        {{navdescription?navdescription:''}}<br>
+        Vendor provided, {{navvendorID}}<br>
+        <b *ngIf="navpayedStatus != 0">Payed by {{navpayedBy}}</b>
+        <b *ngIf="navpayedStatus == 0" style="color:red">Not payed</b>
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <!--<ion-col>
+        <button ion-button clear small color="title" icon-start>
+          <ion-icon ios="ios-document" md="md-document"></ion-icon>
+          View Full
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="title" icon-start>
+          <ion-icon ios="ios-cloud-download" md="md-cloud-download"></ion-icon>
+          Download
+        </button>
+      </ion-col>-->
+      <ion-col text-center *ngIf="toDownload">
+        <button ion-button clear small color="title" icon-start (click)="download()">
+          <ion-icon ios="ios-cloud-download" md="md-cloud-download"></ion-icon>&nbsp;&nbsp;
+          Download
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+  <!--<ion-grid>
+    <ion-row>
+      <ion-col col-6 class="igiric1"><ion-icon ios="ios-document" md="md-document"></ion-icon></ion-col>
+      <ion-col col-6 class="igiric2"><ion-icon ios="ios-cloud-download" md="md-cloud-download"></ion-icon></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list no-lines>
+    <div ion-item>
+      {{ 'item' }}
+    </div>
+    <div ion-item>
+      {{ 'item' }}
+    </div> 
+  </ion-list>
+
+
+  <ion-fab right bottom>
+    <button ion-fab color="bgColor" (click)="openEditBill()" mini><ion-icon ios="ios-open" md="md-open"></ion-icon></button>
+  </ion-fab>-->
+
+</ion-content>

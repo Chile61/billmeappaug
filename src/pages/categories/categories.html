@@ -1,0 +1,45 @@
+<!--
+  Generated template for the Categories page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="Categories" color="{{titleColor}}">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!isOn">Bill Categories</ion-title>
+    <ion-searchbar *ngIf="isOn" (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button (click)="toggleDetails()" ion-button icon-only color="royal">
+        <ion-icon name="ios-search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+  <div *ngIf="categorycount == 0" class="nocats">
+      <img src="assets/images/no_data2.png" class="ncimg">
+  </div>
+  <ion-list *ngIf="categorycount == 1">
+    <ion-item *ngFor="let c of category" (click)="checkcategories(c)">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2 class="catimg">
+            <ion-avatar item-start>
+              <img src="assets/images/bg3.png">
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-8 class="catdescr"><p class="pcat">{{c.name}}</p><p class="pdescr">{{c.description}}</p></ion-col>
+          <ion-col col-2 class="catbadge">
+            <ion-badge item-end>{{c.total}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

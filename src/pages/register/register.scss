@@ -1,0 +1,62 @@
+page-register {
+    ion-content.registercontent {
+        background-image: url(../../assets/images/bg5.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    img.regimg {
+        width: 40%;
+    }
+    ion-col.iongridrictitle.col {
+        text-align: left;
+        font-size: 25px;
+        font-family: sans-serif;
+        font-weight: 600;
+        color: antiquewhite;
+        padding-top: 5%;
+    }
+    ion-item.item {
+        opacity: 0.75;
+        margin-top: 2%;
+    }
+    ion-list.rgpgender.list {
+        opacity: 0.75;
+        background-color: #fff;
+        margin-top: 5px;
+        padding-top: 2%;
+    }
+    .list-md + ion-list ion-list-header {
+        margin-top: -16px;
+        margin-bottom: -10px;
+    }
+    button.picclsimg.item {
+        margin-top: 2%;
+        opacity: 0.75;
+        color: brown;
+    }
+    ion-list.birthionlist.list.list-md {
+        margin-top: -8px;
+    }
+    button.itmbtnreg {
+        max-width: 100%;
+        width: 80%;
+        margin-bottom: 2%;
+    }
+    .itmbtn {
+        text-align: center;
+        margin-top: 2%;
+    }
+    ion-grid.iongrid2.grid {
+        text-align: center;
+    }
+    ion-input.input {
+        color: darkslateblue;
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+    ion-col.giric2.col ion-item div div ion-label, ion-col.giric1.col ion-item div div ion-label {
+        color: darkslateblue;
+        font-weight: 600;
+        font-size: 18px;
+    }
+}

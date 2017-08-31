@@ -1,0 +1,51 @@
+<!--
+  Generated template for the Homeslider page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+--
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>homeslider</ion-title>
+  </ion-navbar>
+
+</ion-header>-->
+
+
+<ion-content no-padding>
+  <ion-slides  speed="1000" loop="false" pager>
+    <!--<ion-slide *ngFor="let slide of slides">autoplay="3500"
+      <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <img [src]="slide.image" class="slide-image"/>
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>-->
+
+    <ion-slide *ngFor="let slide of slides" class="hmsis" [ngStyle]="{'background-color': slide.bg }">
+      <!--<ion-toolbar class="hmsit" *ngIf="slide.id != 1" [ngStyle]="{'background-color': slide.titlebar }">
+        <ion-buttons end>
+          <button ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>-->
+      <img [src]="slide.image" class="slide-image slideimg"/>
+      <h2 class="slide-title slidettl{{slide.id}}" [innerHTML]="slide.title"></h2>
+      <p class="slidep{{slide.id}}" [innerHTML]="slide.description"></p>
+    </ion-slide>
+
+    <ion-slide class="hmsis hmclass0">
+      <ion-toolbar class="hmsit">
+      </ion-toolbar>
+      <img src="assets/images/ica_slidebox_img_4.png" class="slide-image"/>
+      <h2 class="slide-title">Ready to Start?</h2>
+      <button ion-button large clear icon-end color="primary" (click)="continue()">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

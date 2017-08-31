@@ -1,0 +1,24 @@
+page-receiptsview {
+    ion-col.igiric1 ion-icon, ion-col.igiric2 ion-icon {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 100px;
+        color: burlywood;
+    }
+    /*img.billimage {
+        text-align: center;
+        width: 50%;
+        height: 50%;
+    }*/
+    img.billimagepdf {
+        width: 180px;
+        height: 220px;
+        text-align: center;
+        /* margin: 50px; */
+        margin-left: 25%;
+        margin-right: 25%;
+        left: 0;
+        right: 0;
+    }
+}

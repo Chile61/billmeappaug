@@ -1,0 +1,59 @@
+<ion-header>
+
+  <!--<ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>-->
+
+</ion-header>
+
+
+<ion-content class="logincontent" padding scroll="false">
+    
+    <!--Login Form-->
+    <div class="divimg">
+      <img src="assets/images/logo.png" class="loginimg">
+    </div>
+    <ion-list class="ionlist">
+
+
+     <ion-grid class="iongrid">
+        <ion-row class="ionrow1">
+          <ion-col col-12 class="iam">I am, {{iam}}</ion-col>
+        </ion-row>
+        <ion-row class="ionrow2">
+          <ion-col col-6 class="text-center"><img id="user" class="user" [ngStyle]="{'background-color':myuserstyle,'padding': '15px','border-radius': '40px'}" src="{{userimg}}" (click)="finduser($event)"></ion-col>
+          <ion-col col-6 class="text-center"><img id="vendor" class="vendor" [ngStyle]="{'background-color':myvendorstyle,'padding': '15px','border-radius': '40px'}" src="{{vendorimg}}" (click)="findvendor($event)"></ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item class="itmeml">
+        <ion-input type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item class="itmpass">
+        <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+      </ion-item>
+
+      
+
+      <!--<ion-item class="itmchkbx">
+        <ion-label class="rmbe">Remember Me</ion-label>
+        <ion-checkbox class="chkbx" color="dark" checked="true"></ion-checkbox>
+      </ion-item>-->
+
+      <div class="itmbtn">
+        <button ion-button large class="itmbtnlogin" (click)="DoLogin()" round>
+          Login
+        </button>
+      
+        <!-- vendor292F99 -->
+      
+        <button ion-button outline small (click)="goRegister()">Are you not registered user?</button>
+      </div>
+    </ion-list>
+    <ion-grid class="iongrid2">
+        <ion-row class="ionrow12">
+          <ion-col col-12 class="powrd">Powered by, ABCD, &copy; 2017</ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

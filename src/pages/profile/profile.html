@@ -1,0 +1,71 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="Profile" color="{{titleColor}}">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profile {{uname}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding>
+
+  <img src="{{upic}}" class="profileimage" (click)="changePicture()" />
+
+  <ion-card>
+
+    <ion-card-header class="profilename">
+      {{uname+' '}}{{usname?usname:""}}
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="ios-mail-outline" item-start></ion-icon>
+            {{uemail}}
+        </ion-item>
+        <ion-item>
+          <ion-icon name="ios-person-outline" item-start></ion-icon>
+            {{ugender}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+
+    <ion-card>
+
+    <ion-card-content>
+      <ion-list *ngIf="ucontact != null">
+        <ion-item>
+          <ion-icon name="ios-contact-outline" item-start></ion-icon>
+            {{uccode+''+ucontact}}
+        </ion-item>
+      </ion-list>
+      <ion-card>
+        <ion-card-content>
+          <ion-icon name="ios-barcode-outline" item-start></ion-icon>
+          {{uaddress}}
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+
+  </ion-card>
+
+  
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon name="ios-timer-outline" item-start></ion-icon>
+          Joined at {{ujoin}} 
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

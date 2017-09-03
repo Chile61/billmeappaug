@@ -65,6 +65,8 @@ export class Signup {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Signup');
+    let lang = 'en';
+    localStorage.setItem("billmeAppLanguage",lang);
   }
 
   finduser(e){
@@ -312,6 +314,31 @@ export class Signup {
   generateapi(){
     if(localStorage.getItem('ApiKey') == "" ||  localStorage.getItem('ApiKey') == null || !localStorage.getItem('ApiKey')){
       console.log("not generated");
+      //only make url
+      //make token
+      /*this.mp.generateApiKey().then(
+        data=>{ 
+          console.info(data);
+          let d = JSON.parse(JSON.stringify(data));
+          console.log(d.status);  
+          if(d.status == "success"){
+            localStorage.setItem("ApiKey",d.ApiKey);
+            //var ap = localStorage.getItem("appUrl")+"/"+d.ApiKey;
+            //localStorage.setItem("appUrl",ap);
+            //console.log(localStorage.getItem("appUrl"));
+          } 
+          else{
+            localStorage.setItem("ApiKey","no-api-key-found");
+          }
+          //alert(localStorage.getItem('ApiKey')+" "+JSON.stringify(data));
+        },
+        error=>{
+          //alert(JSON.stringify(error));
+          console.error(error);
+        }
+      );*/
+      //end
+      
       this.mp.registerdevice().then(
         res=>{
           let d = JSON.parse(JSON.stringify(res));
@@ -325,9 +352,6 @@ export class Signup {
                 console.log(d.status);  
                 if(d.status == "success"){
                   localStorage.setItem("ApiKey",d.ApiKey);
-                  /*var ap = localStorage.getItem("appUrl")+"/"+d.ApiKey;
-                  localStorage.setItem("appUrl",ap);
-                  console.log(localStorage.getItem("appUrl"));*/
                 } 
                 else{
                   localStorage.setItem("ApiKey","no-api-key-found");
@@ -349,9 +373,9 @@ export class Signup {
                 console.log(d.status);  
                 if(d.status == "success"){
                   localStorage.setItem("ApiKey",d.ApiKey);
-                  /*var ap = localStorage.getItem("appUrl")+"/"+d.ApiKey;
-                  localStorage.setItem("appUrl",ap);
-                  console.log(localStorage.getItem("appUrl"));*/
+                  //var ap = localStorage.getItem("appUrl")+"/"+d.ApiKey;
+                  //localStorage.setItem("appUrl",ap);
+                  //console.log(localStorage.getItem("appUrl"));
                 } 
                 else{
                   localStorage.setItem("ApiKey","no-api-key-found");

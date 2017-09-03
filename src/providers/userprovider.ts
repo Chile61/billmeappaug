@@ -35,4 +35,23 @@ export class Userprovider {
         );
     });
   }
+
+  //profile.html
+  changeprofilepic(lData){
+    lData = JSON.stringify(lData);
+    let url = this.urlstr;
+    console.warn(url);
+    return new Promise((resolve,reject)=>{
+      this.http.post(url+'/changeprofilepic',lData)
+      .map(res=>res.json())
+        .subscribe(
+            data => {
+                resolve(data);
+            },
+            error => {
+                reject(error);
+            }
+        );
+    });
+  }
 }

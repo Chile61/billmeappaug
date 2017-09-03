@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Receipt {{navName}}</ion-title>
+    <ion-title>{{ "ReceiptViewPageTitle" | translate }} {{navName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
       {{navbillNo}}
     </ion-card-header>
     <ion-card-content>
-      The Bill {{navbillNo}} is been purchased at {{convert(navbuyedAt)}}.
+        {{ "ReceiptViewPageTheBill" | translate }} {{navbillNo}} {{ "ReceiptViewPagePurchase" | translate }} {{convert(navbuyedAt)}}.
     </ion-card-content>
   </ion-card>
 
@@ -31,9 +31,9 @@
       </ion-card-title>
       <p>
         {{navdescription?navdescription:''}}<br>
-        Vendor provided, {{navvendorID}}<br>
-        <b *ngIf="navpayedStatus != 0">Payed by {{navpayedBy}}</b>
-        <b *ngIf="navpayedStatus == 0" style="color:red">Not payed</b>
+        {{ "ReceiptViewPageVendor" | translate }}, {{navvendorID}}<br>
+        <b *ngIf="navpayedStatus != 0">{{ "ReceiptViewPagePay" | translate }} {{navpayedBy}}</b>
+        <b *ngIf="navpayedStatus == 0" style="color:red">{{ "ReceiptViewPageNotPay" | translate }}</b>
       </p>
     </ion-card-content>
     <ion-row no-padding>
@@ -52,7 +52,7 @@
       <ion-col text-center *ngIf="toDownload">
         <button ion-button clear small color="title" icon-start (click)="download()">
           <ion-icon ios="ios-cloud-download" md="md-cloud-download"></ion-icon>&nbsp;&nbsp;
-          Download
+          {{ "ReceiptViewPageDownload" | translate }}
         </button>
       </ion-col>
     </ion-row>

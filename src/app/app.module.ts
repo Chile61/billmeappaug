@@ -32,9 +32,14 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { Device } from '@ionic-native/device';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Globalization } from '@ionic-native/globalization';
 
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
-import {HttpModule} from '@angular/http';
+
+import { HttpModule, Http } from '@angular/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -61,6 +66,13 @@ import {HttpModule} from '@angular/http';
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -94,7 +106,12 @@ import {HttpModule} from '@angular/http';
     InAppBrowser,
     PhotoViewer,
     Device,
-    Camera
+    Camera,
+    Globalization
   ]
 })
 export class AppModule {}
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

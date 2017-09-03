@@ -1,0 +1,50 @@
+{
+    "appName":"बिल मी",
+
+    "DashboardPageTitle":"डैशबोर्ड",
+    "DashboardPageTotalExpenditure":"कुल व्यय",
+    "DashboardPageWallet":"बटुआ बैलेंस",
+    "DashboardPageEbills":"ई-बिल प्राप्त",
+    "DashboardPageBillsDue":"देय बिल",
+    "DashboardPageMostRecentBills":"सबसे हालिया बिल",
+    "DashboardPageMRBNo":"आपके पास कोई हालिया बिल नहीं है",
+    "DashboardPageBDNo":"आपके पास कोई देय बिल नहीं है",
+    "DashboardPageDeals":"सप्ताह के सौदे",
+    "DashboardPageDealsNo":"आपके पास कोई सौदा नहीं है",
+
+    "BillviewpdfPageBills":"बिल",
+
+    "CategoriesPageBillCategories":"बिल श्रेणियाँ",
+
+    "CategorybillsPageBillsFor":"बिल के लिये",
+    "CategorybillsPageTotal":"कुल",
+    "CategorybillsPageBAmnt":"बिल रकम",
+
+    "DealsPageDeal":"सौदा",
+
+    "ProfilePageTitle":"प्रोफाइल",
+    "ProfilePageJoinedat":"शामिल हो गए",
+
+    "ReceiptsPageTitle":"प्राप्तियां",
+
+    "ReceiptViewPageTitle":"रसीद",
+    "ReceiptViewPageTheBill":"बिल",
+    "ReceiptViewPagePurchase":"पर खरीदा गया है",
+    "ReceiptViewPageVendor":"विक्रेता प्रदान किया",
+    "ReceiptViewPagePay":"द्वारा भुगतान",
+    "ReceiptViewPageNotPay":"नहीं चुकाया",
+    "ReceiptViewPageDownload":"डाउनलोड",
+
+    "ServiceconnectPageTitle":"सेवा कनेक्ट",
+
+    "SettingPageTitle":"सेटिंग",
+    "SettingPageBMLang":"बिल मी भाषा",
+    "SettingPageCATheme":"ऐप थीम बदलें",
+    "SettingPageSignOut":"इस सत्र के लिए साइन आउट करें",
+    "SettingPageDA":"बिल मी से खाता हटाएं",
+
+    "WalletPageTitle":"वॉलेट",
+
+    "working":"काम कर रहे"
+
+}

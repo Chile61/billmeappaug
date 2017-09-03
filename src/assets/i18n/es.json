@@ -1,0 +1,50 @@
+{
+    "appName":"Cobrame",
+
+    "DashboardPageTitle":"Tablero",
+    "DashboardPageTotalExpenditure":"El gasto total",
+    "DashboardPageWallet":"Saldo de Wallet",
+    "DashboardPageEbills":"E-factura recibida",
+    "DashboardPageBillsDue":"Facturas debidas",
+    "DashboardPageMostRecentBills":"Cuentas más recientes",
+    "DashboardPageMRBNo":"No hay facturas recientes que tenga.",
+    "DashboardPageBDNo":"Usted no tiene ninguna cuenta debida.",
+    "DashboardPageDeals":"Ofertas de la semana",
+    "DashboardPageDealsNo":"No tienes ofertas.",
+
+    "BillviewpdfPageBills":"Facturas",
+
+    "CategoriesPageBillCategories":"Categorías de cuentas",
+
+    "CategorybillsPageBillsFor":"Facturas para",
+    "CategorybillsPageTotal":"Total",
+    "CategorybillsPageBAmnt":"Total de la factura",
+
+    "DealsPageDeal":"Ofertas y Descuentos",
+
+    "ProfilePageTitle":"Perfil",
+    "ProfilePageJoinedat":"Se unió a",
+
+    "ReceiptsPageTitle":"Ingresos",
+
+    "ReceiptViewPageTitle":"Recibo",
+    "ReceiptViewPageTheBill":"La factura",
+    "ReceiptViewPagePurchase":"ha sido comprado en",
+    "ReceiptViewPageVendor":"Proveedor proporcionado",
+    "ReceiptViewPagePay":"Pagado por",
+    "ReceiptViewPageNotPay":"No pagado",
+    "ReceiptViewPageDownload":"Descargar",
+
+    "ServiceconnectPageTitle":"Servicio de conexión",
+
+    "SettingPageTitle":"Ajuste",
+    "SettingPageBMLang":"Bill Me Idioma",
+    "SettingPageCATheme":"Cambiar tema de la aplicación",
+    "SettingPageSignOut":"Salir para esta sesión",
+    "SettingPageDA":"Eliminar cuenta de Bill Me",
+
+    "WalletPageTitle":"Billetera",
+
+    "working":"Trabajando"
+
+}

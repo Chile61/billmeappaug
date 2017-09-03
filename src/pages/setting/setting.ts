@@ -5,6 +5,9 @@ import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { Titlecolors } from '../services/titlecolors';
+import { Applanguage } from '../services/applanguage';
+
+import { TranslateService } from '@ngx-translate/core';
 
 import { MyApp } from '../../app/app.component';
 /*
@@ -16,7 +19,7 @@ import { MyApp } from '../../app/app.component';
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html',
-  providers:[Titlecolors]
+  providers:[Titlecolors,Applanguage]
 })
 export class Setting {
 
@@ -24,12 +27,17 @@ export class Setting {
   titleColor:any;
   piccolors:any;
 
+  language:any;
+  alllang:any;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public toastCtrl:ToastController,
     public titleServ:Titlecolors,
-    public alertCtrl:AlertController
+    public applanguage:Applanguage,
+    public alertCtrl:AlertController,
+    public translate: TranslateService
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -44,6 +52,9 @@ export class Setting {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingPage');
+    this.language = localStorage.getItem("billmeAppLanguage");
+    this.translate.setDefaultLang(this.language);
+    this.alllang = this.applanguage.listlanguages();
   }
 
   changevisibility(){
@@ -89,6 +100,41 @@ export class Setting {
       ]
     });
     alert.present();
+  }
+
+
+  deleteacc(){
+    let alert = this.alertCtrl.create({
+      title: 'Confirm to delete account',
+      message: 'Do you really want to delete account from BillMe, All data will be deleted?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.toastCtrl.create({
+              message:"This feature will be available soon",position:'bottom',duration:2500
+            }).present();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  changeLanguage(){
+    let lang = this.language;
+    console.log(lang);
+    if(lang!="" || lang != null){
+      localStorage.setItem("billmeAppLanguage",lang);
+      this.translate.setDefaultLang(lang);
+    }
   }
 
 }

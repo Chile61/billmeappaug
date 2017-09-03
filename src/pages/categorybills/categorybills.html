@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Bills For {{navName}}</ion-title>
+    <ion-title>{{ "CategorybillsPageBillsFor" | translate }} {{navName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,7 +20,7 @@
     <ion-card>
       <img src="assets/images/bg3.png"/>
       <div class="card-title">{{navName}}</div>
-      <div class="card-subtitle">Total {{navTotal+' and cost is '+navAmount}}</div>
+      <div class="card-subtitle">{{ "CategorybillsPageTotal" | translate }} {{navTotal+' and cost is '+navAmount}}</div>
     </ion-card>
   </div>
 
@@ -42,7 +42,7 @@
         <img src="assets/images/person.png">
       </ion-avatar>
       <h2>{{d.billName + ' ' +d.billNo}}</h2>
-      <h3>Bill amount {{d.amountCurrency}} {{d.amount}}/-</h3>
+      <h3>{{ "CategorybillsPageBAmnt" | translate }} {{d.amountCurrency}} {{d.amount}}/-</h3>
       <p>{{convert(d.buyedAt)}}</p>
     </ion-item>
   </ion-list>

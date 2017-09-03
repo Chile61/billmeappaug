@@ -1,0 +1,50 @@
+{
+    "appName":"Bill Me",
+
+    "DashboardPageTitle":"Dashboard",
+    "DashboardPageTotalExpenditure":"Total Expenditure",
+    "DashboardPageWallet":"Wallet Balance",
+    "DashboardPageEbills":"E-bills received",
+    "DashboardPageBillsDue":"Bills Due",
+    "DashboardPageMostRecentBills":"Most Recent Bills",
+    "DashboardPageMRBNo":"There is no recent bills you have.",
+    "DashboardPageBDNo":"You does not have any due bills.",
+    "DashboardPageDeals":"Deals of the week",
+    "DashboardPageDealsNo":"You does not have any deals.",
+
+    "BillviewpdfPageBills":"Bills",
+
+    "CategoriesPageBillCategories":"Bill Categories",
+
+    "CategorybillsPageBillsFor":"Bills For",
+    "CategorybillsPageTotal":"Total",
+    "CategorybillsPageBAmnt":"Bill amount",
+
+    "DealsPageDeal":"Deals",
+
+    "ProfilePageTitle":"Profile",
+    "ProfilePageJoinedat":"Joined at",
+
+    "ReceiptsPageTitle":"Receipts",
+
+    "ReceiptViewPageTitle":"Receipt",
+    "ReceiptViewPageTheBill":"The Bill",
+    "ReceiptViewPagePurchase":"is been purchased at",
+    "ReceiptViewPageVendor":"Vendor provided",
+    "ReceiptViewPagePay":"Payed by",
+    "ReceiptViewPageNotPay":"Not payed",
+    "ReceiptViewPageDownload":"Download",
+
+    "ServiceconnectPageTitle":"Serviceconnect",
+
+    "SettingPageTitle":"Setting",
+    "SettingPageBMLang":"Bill Me Language",
+    "SettingPageCATheme":"Change App Theme",
+    "SettingPageSignOut":"Sign Out For This Session",
+    "SettingPageDA":"Delete Account From Bill Me",
+
+    "WalletPageTitle":"Wallet",
+
+    "working":"Working"
+
+}

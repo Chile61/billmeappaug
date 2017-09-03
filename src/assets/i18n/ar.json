@@ -1,0 +1,50 @@
+{
+    "appName":"جهز لي الفاتورة",
+
+    "DashboardPageTitle":"لوحة القيادة",
+    "DashboardPageTotalExpenditure":"مجموع النفقات",
+    "DashboardPageWallet":"رصيد المحفظة",
+    "DashboardPageEbills":"تلقى الفاتورة الإلكترونية",
+    "DashboardPageBillsDue":"الفواتير المستحقة",
+    "DashboardPageMostRecentBills":"أحدث الفواتير",
+    "DashboardPageMRBNo":"ليس هناك فواتير الأخيرة لديك.",
+    "DashboardPageBDNo":"ليس لديك أي فواتير المستحقة.",
+    "DashboardPageDeals":"عروض الأسبوع",
+    "DashboardPageDealsNo":"ليس لديك أي صفقات.",
+
+    "BillviewpdfPageBills":"فواتير",
+
+    "CategoriesPageBillCategories":"فئات بيل",
+
+    "CategorybillsPageBillsFor":"فواتير ل",
+    "CategorybillsPageTotal":"مجموع",
+    "CategorybillsPageBAmnt":"مبلغ الفاتورة",
+
+    "DealsPageDeal":"صفقات",
+
+    "ProfilePageTitle":"الملف الشخصي",
+    "ProfilePageJoinedat":"انضم في",
+
+    "ReceiptsPageTitle":"المبالغ المستلمة",
+
+    "ReceiptViewPageTitle":"إيصال",
+    "ReceiptViewPageTheBill":"مشروع القانون",
+    "ReceiptViewPagePurchase":"تم شراؤها في",
+    "ReceiptViewPageVendor":"تم توفير المورد",
+    "ReceiptViewPagePay":"مدفوعة من قبل",
+    "ReceiptViewPageNotPay":"لم تدفع",
+    "ReceiptViewPageDownload":"تحميل",
+
+    "ServiceconnectPageTitle":"خدمة الاتصال",
+
+    "SettingPageTitle":"ضبط",
+    "SettingPageBMLang":"بيل مي اللغة",
+    "SettingPageCATheme":"تغيير التطبيق الموضوع",
+    "SettingPageSignOut":"تسجيل الخروج لهذه الجلسة",
+    "SettingPageDA":"حذف حساب من بيل مي",
+
+    "WalletPageTitle":"محفظة نقود",
+
+    "working":"العمل"
+
+}

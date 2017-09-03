@@ -73,6 +73,15 @@ export class Dashboard {
         let d = JSON.parse(JSON.stringify(data));
         if(d.status=="success"){
 
+          let profilepic = d.profilepic;
+          if(profilepic == null || profilepic == ""){
+            this.pic = "assets/images/person.png";
+            localStorage.setItem("billmeProfilePic","assets/images/person.png");
+          }else{ 
+            localStorage.setItem("billmeProfilePic",profilepic);
+            this.pic = profilepic;
+          }
+
           let exp = d.expenditure;
           if(exp == null || exp == "00.00"){
             this.expenditure = "00.00";

@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Globalization } from '@ionic-native/globalization';
+
+import { TranslateService } from '@ngx-translate/core';
 
 //import { HomePage } from '../pages/home/home';
 //import { ListPage } from '../pages/list/list';
@@ -33,9 +36,23 @@ export class MyApp {
   pages: Array<{title: string, component: any,icon:string}>;
 
   pic:any;
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    public globalization: Globalization,
+    public translate: TranslateService
+  ) {
     this.initializeApp();
 
+    if(localStorage.getItem('billmeAppLanguage') == "" ||   localStorage.getItem('billmeAppLanguage') == null || !localStorage.getItem('billmeAppLanguage')){
+      let lang = 'en';
+      translate.setDefaultLang(lang);
+      localStorage.setItem("billmeAppLanguage",lang);
+    }else{
+      let lang = localStorage.getItem("billmeAppLanguage");
+      translate.setDefaultLang(lang);
+    }
     //take session
     if(localStorage.getItem('billmeIn') == "" || localStorage.getItem('billmeIn') == "N" ||  localStorage.getItem('billmeIn') == null || !localStorage.getItem('billmeIn')){
       if(localStorage.getItem('billmeSeenSlider') == "" || localStorage.getItem('billmeSeenSlider') == "N" ||  localStorage.getItem('billmeSeenSlider') == null || !localStorage.getItem('billmeSeenSlider')){
@@ -81,6 +98,11 @@ export class MyApp {
       this.splashScreen.hide();
       this.pic = "assets/images/person.png";
       localStorage.setItem("appUrl","http://www.podargroup.com/billmemobileapp/api/mobile");
+
+      this.globalization.getPreferredLanguage()
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
+
     });
   }
 

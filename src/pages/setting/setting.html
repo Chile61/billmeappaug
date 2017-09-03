@@ -9,22 +9,30 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Setting</ion-title>
+    <ion-title>{{ "SettingPageTitle" | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
+
+  <!--<ion-list>
     <ion-item>
       <ion-label> Make Visible To All</ion-label>
       <ion-toggle [(ngModel)]="makevisible" (ionChange)="changevisibility()"></ion-toggle>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
+
+  <ion-item>
+    <ion-label>{{ "SettingPageBMLang" | translate }}</ion-label>
+    <ion-select [(ngModel)]="language" submitText="Done" cancelText="Cancel" (ngModelChange)="changeLanguage()">
+      <ion-option *ngFor="let l of alllang" value="{{l.code}}">{{l.name}}</ion-option>
+    </ion-select>
+  </ion-item>
 
   <ion-card class="setic">
       <ion-card-header>
-        Change App Theme
+        {{ "SettingPageCATheme" | translate }}
       </ion-card-header>
       <ion-card-content class="seticc">
         <ion-list>
@@ -36,5 +44,7 @@
     </ion-card-content>
   </ion-card>
 
-  <button ion-button round block color="danger" (click)="signout()">Sign Out For This Session</button>
+  <button ion-button round block color="danger" (click)="signout()">{{ "SettingPageSignOut" | translate }}</button>
+
+  <button ion-button block large outline color="dark" (click)="deleteacc()">{{ "SettingPageDA" | translate }}</button>
 </ion-content>

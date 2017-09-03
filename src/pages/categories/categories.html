@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title *ngIf="!isOn">Bill Categories</ion-title>
+    <ion-title *ngIf="!isOn">{{ "CategoriesPageBillCategories" | translate }}</ion-title>
     <ion-searchbar *ngIf="isOn" (ionInput)="getItems($event)"></ion-searchbar>
     <ion-buttons end>
       <button (click)="toggleDetails()" ion-button icon-only color="royal">

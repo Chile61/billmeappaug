@@ -48,6 +48,7 @@ export class Profile {
 
       //console.info(this.service.hello());
       this.loadProfile();
+      this.upic = 'assets/images/bg3.png';
   }
 
   ionViewDidLoad() {
@@ -170,8 +171,7 @@ export class Profile {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType:this.camera.PictureSourceType.PHOTOLIBRARY,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      encodingType: this.camera.EncodingType.JPEG
     }
     
     this.camera.getPicture(options).then((imageData) => {
@@ -187,6 +187,47 @@ export class Profile {
 
   //postprofilepic
   postPic(){
-    alert("pic:"+this.upic);
+    let loading = this.loadCtrl.create({
+      spinner: 'dots',
+      content: `
+        <ion-spinner class="loadDataSpin" name="dots"></ion-spinner>`,
+      cssClass:'classforspindata'
+    });
+    loading.present();
+
+    let pic = this.upic;
+    let lData = {
+      uid:localStorage.getItem("billmeUID"),
+      image:pic
+    };
+    this.up.changeprofilepic(lData).then(
+      (result)=>{
+        let dt = JSON.parse(JSON.stringify(result));
+        let m = JSON.stringify(result);
+        if(dt.status == "success"){
+          console.log(dt.message);
+          let msg = dt.message;
+          let path = dt.path;
+          localStorage.setItem("billmeProfilePic",path);
+          this.toastCtrl.create({
+            message:msg,duration:2000,position:'middle'
+          }).present();
+        }else{
+          this.toastCtrl.create({
+              message:"Network is busy",duration:2000,position:'top'
+          }).present();
+        }
+        loading.dismiss();
+      },
+      (error)=>{
+        let m = JSON.stringify(error);
+        this.toastCtrl.create({
+            message:"Network is unavailable",duration:2000,position:'top'
+        }).present();
+        loading.dismiss();
+      }
+    );
   }
+
+  
 }

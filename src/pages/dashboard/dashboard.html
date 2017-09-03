@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>{{ "DashboardPageTitle" | translate }}</ion-title>
     <!--<ion-buttons end>
       <button ion-button icon-only color="royal">
         <ion-icon name="ios-search"></ion-icon>
@@ -23,24 +23,24 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div class="dste">Total Expenditure<br>&#8377; {{expenditure}}/-</div>
+        <div class="dste">{{ "DashboardPageTotalExpenditure" | translate }}<br>&#8377; {{expenditure}}/-</div>
       </ion-col>
       <ion-col>
-        <div class="dsimg"><img src="assets/images/person.png" class="dsimgp"></div>
+        <div class="dsimg"><img src="{{pic}}" class="dsimgp"></div>
       </ion-col>
       <ion-col> 
-        <div class="dswb">Wallet Balance<br>&#8377; 200/-</div>
+        <div class="dswb">{{ "DashboardPageTotalWallet" | translate }}<br>&#8377; 200/-</div>
       </ion-col>
     </ion-row>
     <ion-row class="srow">
       <ion-col>
-        <div class="dsebr">E-bills received<br>{{ebillreceived}}</div>
+        <div class="dsebr">{{ "DashboardPageEbills" | translate }}<br>{{ebillreceived}}</div>
       </ion-col>
       <ion-col>
         <div class="dsicd">&nbsp;</div>
       </ion-col>
       <ion-col>
-        <div class="dsbd">Bills Due<br>{{totalduebill}}</div>
+        <div class="dsbd">{{ "DashboardPageBillsDue" | translate }}<br>{{totalduebill}}</div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -58,11 +58,11 @@
 
   <div class="mostrecentbills">
     <div class="mrbhead">
-      Most Recent Bills
+      {{ "DashboardPageMostRecentBills" | translate }}
     </div>
     <div *ngIf="mostrecentcount == 0" class="emptydata">
       <!--<button ion-button (click)="makepdf()">Make pdf</button>-->
-      <p><b>There is no recent bills you have.</b></p>
+      <p><b>{{ "DashboardPageMRBNo" | translate }}</b></p>
     </div>
   <ion-grid class="mrbig1" *ngIf="mostrecentcount == 1">
     <ion-row class="mrbir1">
@@ -98,10 +98,10 @@
 
   <div class="billsdue">
     <div class="bdhead">
-      Bills Due
+      {{ "DashboardPageBillsDue" | translate }}
     </div>
     <div *ngIf="duebillscount == 0" class="emptydata">
-      <p><b>You does not have any due bills.</b></p>
+      <p><b>{{ "DashboardPageBDNo" | translate }}</b></p>
     </div>
   <ion-grid class="mrbig1" *ngIf="duebillscount == 1">
     <ion-row class="mrbir1">
@@ -137,10 +137,10 @@
 
   <div class="dealsofweek">
     <div class="dtwhead">
-      Deals of the week
+      {{ "DashboardPageDeals" | translate }}
     </div>
     <div *ngIf="dealscount == 0" class="emptydata">
-      <p><b>You does not have any deals.</b></p>
+      <p><b>{{ "DashboardPageDealsNo" | translate }}</b></p>
     </div>
     <div class="dtwbody" *ngIf="dealscount == 1">
       <ion-card>

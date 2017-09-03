@@ -51,7 +51,7 @@ export class Dashboard {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
+    console.log('ionViewDidLoad DashboardPage HomePage');
     this.billmeuser = localStorage.getItem("billmeUser");
     this.loadData();
   }

@@ -34,7 +34,7 @@ export class Billviewpdf {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Billviewpdf');
+    console.log('ionViewDidLoad Billviewpdf Page');
   }
 
 }

@@ -91,6 +91,7 @@ export class Signup {
       this.useractive = 1;this.userimg = "assets/images/useractive.png";
     }
     this.iam = "User";
+    localStorage.setItem("billmeCandidateType","u");
     this.toastCtrl.create({
         message:'I am '+this.iam,
         duration:2000,
@@ -121,6 +122,7 @@ export class Signup {
       this.vendoractive = 1;this.vendorimg = "assets/images/vendoractive.png";
     }
     this.iam = "Vendor";
+    localStorage.setItem("billmeCandidateType","v");
     this.toastCtrl.create({
         message:'I am '+this.iam,
         duration:2000,
@@ -216,7 +218,13 @@ export class Signup {
     //this.regname = (<HTMLInputElement>document.getElementById('regUsername')).value;
     //console.log(this.regname+" "+(<HTMLInputElement>document.getElementById('regUsername')).value+" p:"+this.regpassword);
     console.log(this.regagree+" "+this.regaddress+" "+this.reggender+" "+this.regemail+" "+this.regpassword+" "+this.regname);
-    if(this.regname == "" || this.regname == null){
+    if(this.iam == "..." || this.iam == "" || this.iam == null){
+      this.toastCtrl.create({
+        message:'Should I know who you are?',
+        duration:2000,
+        position:'top'
+      }).present();
+    }else if(this.regname == "" || this.regname == null){
       this.toastCtrl.create({
         message:'Username is required',duration:2000,position:'top'
       }).present();
@@ -316,7 +324,8 @@ export class Signup {
       console.log("not generated");
       //only make url
       //make token
-      /*this.mp.generateApiKey().then(
+      /*
+      this.mp.generateApiKey().then(
         data=>{ 
           console.info(data);
           let d = JSON.parse(JSON.stringify(data));
@@ -336,7 +345,8 @@ export class Signup {
           //alert(JSON.stringify(error));
           console.error(error);
         }
-      );*/
+      );
+      */
       //end
       
       this.mp.registerdevice().then(

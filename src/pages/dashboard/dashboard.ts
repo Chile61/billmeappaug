@@ -85,8 +85,10 @@ export class Dashboard {
           let exp = d.expenditure;
           if(exp == null || exp == "00.00"){
             this.expenditure = "00.00";
+            localStorage.setItem("billmeExpenditure","0");
           }else{
             this.expenditure = exp;
+            localStorage.setItem("billmeExpenditure",this.expenditure);
           }
           let ebr = d.ebillreceived;
           if(ebr == null || ebr == "0"){

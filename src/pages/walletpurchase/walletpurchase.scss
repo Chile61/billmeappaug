@@ -1,3 +1,22 @@
 page-walletpurchase {
-
+    ion-card.wpcard.card.card-md {
+        height: 100%;
+    }
+    ion-card.wpcard ion-card-header {
+        text-align: center;
+    }
+    ion-card.wpcard.card ion-card-content {
+        text-align: center;
+    }
+    button.wpbtn1 {
+        height: 60px;
+        margin-top: 20%;
+        margin-bottom: 10%;
+    }
+    button.wpbtn2 {
+        height: 60px;
+        margin-top: 20%;
+        margin-bottom: 10%;
+    }
+        
 }

@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class Walletexpenditure {
 
   titleColor:string;
+  weexpenditure:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams) {
@@ -28,6 +29,7 @@ export class Walletexpenditure {
   }
 
   ionViewDidLoad() {
+    this.weexpenditure = localStorage.getItem("billmeExpenditure");
     console.log('ionViewDidLoad WalletexpenditurePage');
   }
 

@@ -13,7 +13,7 @@ export class Userprovider {
 
   urlstr;
   constructor(public http: Http) {
-    this.urlstr = localStorage.getItem('appUrl')+"/"+localStorage.getItem('ApiKey');
+    this.urlstr = localStorage.getItem('appUrl')+"/"+localStorage.getItem('ApiKey')+"/"+localStorage.getItem("billmeCandidateType");
     console.log('Hello Userprovider Provider');
   }
 

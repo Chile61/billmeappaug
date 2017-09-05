@@ -1,3 +1,20 @@
 page-walletbalance {
-
+    ion-card.wbcard ion-card-header.card-header {
+        font-size: 20px;
+        font-family: cursive;
+        text-align: center;
+    }
+    ion-card.wbcard.card.card-md {
+        height: 100%;
+    }
+    ion-card.wbcard ion-card-content {
+        text-align: center;
+    }
+    p.wbamount {
+        font-size: 100px;
+    }
+    ion-card-content img.wpageimg {
+        bottom: 0;
+        padding: 15%;
+    }
 }

@@ -31,4 +31,11 @@ export class Walletpurchase {
     console.log('ionViewDidLoad WalletpurchasePage');
   }
 
+  recharge(){
+    console.log("Yet not complete");
+  }
+
+  pay(){
+    console.log("Yet not complete");
+  }
 }

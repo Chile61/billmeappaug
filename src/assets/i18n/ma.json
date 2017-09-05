@@ -45,6 +45,24 @@
 
     "WalletPageTitle":"वॉलेट",
 
-    "working":"कार्यरत आहे"
+    "working":"कार्यरत आहे",
+
+    "Menu":{
+        "Dashboard":"डॅशबोर्ड",
+        "Bills":"बिल",
+        "Categories":"बिल श्रेण्या",
+        "Wallet":"वॉलेट",
+        "Serviceconnect":"सेवा कनेक्ट",
+        "Deals":"सौदे",
+        "Profile":"प्रोफाइल",
+        "Settings":"सेटिंग"
+    },
+    
+    "WalletBalancePageTitle":"Wallet Balance",
+    
+    "WalletExpenditurePageTitle":"Wallet Expenditure",
+    
+    "WalletPurchasePageTitle":"Wallet Purchase"
+
 
 }

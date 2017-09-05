@@ -10,7 +10,7 @@
   <ion-content class="bmmenuic">
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon name="{{p.icon}}"></ion-icon>&nbsp;&nbsp;{{p.title}}
+        <ion-icon name="{{p.icon}}"></ion-icon>&nbsp;&nbsp;{{ 'Menu.'+p.title | translate }}
       </button>
     </ion-list>
     <div class="divfootermenu">

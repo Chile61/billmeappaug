@@ -21,6 +21,9 @@ import { Deals } from '../pages/deals/deals';
 import { Wallet } from '../pages/wallet/wallet';
 import { Serviceconnect } from '../pages/serviceconnect/serviceconnect';
 import { Billviewpdf } from '../pages/billviewpdf/billviewpdf';
+import { Walletbalance } from '../pages/walletbalance/walletbalance';
+import { Walletexpenditure } from '../pages/walletexpenditure/walletexpenditure';
+import { Walletpurchase } from '../pages/walletpurchase/walletpurchase';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,6 +42,8 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { HttpModule, Http } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -60,7 +65,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     Wallet,
     Serviceconnect,
     Billviewpdf,
-    PdfViewerComponent
+    PdfViewerComponent,
+    Walletbalance,Walletexpenditure,Walletpurchase
   ],
   imports: [
     HttpModule,
@@ -72,7 +78,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         useFactory: (createTranslateLoader),
         deps: [Http]
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -93,7 +100,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     Deals,
     Wallet,
     Serviceconnect,
-    Billviewpdf
+    Billviewpdf,
+    Walletbalance,Walletexpenditure,Walletpurchase
   ],
   providers: [
     StatusBar,

@@ -45,6 +45,24 @@
 
     "WalletPageTitle":"Billetera",
 
-    "working":"Trabajando"
+    "working":"Trabajando",
+
+    "Menu":{
+        "Dashboard":"Tablero",
+        "Bills":"Facturas",
+        "Categories":"Categorías de cuentas",
+        "Wallet":"Billetera",
+        "Serviceconnect":"Servicio de conexión",
+        "Deals":"Ofertas y Descuentos",
+        "Profile":"Perfil",
+        "Settings":"Ajuste"
+    },
+
+    "WalletBalancePageTitle":"Wallet Balance",
+    
+    "WalletExpenditurePageTitle":"Wallet Expenditure",
+    
+    "WalletPurchasePageTitle":"Wallet Purchase"
+
 
 }

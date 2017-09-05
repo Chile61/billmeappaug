@@ -79,7 +79,7 @@ export class MyApp {
       { title: 'Bills', component: Receipts ,icon: 'paper'},
       { title: 'Categories', component: Categories ,icon: 'copy'},
       { title: 'Wallet', component: Wallet ,icon: 'beaker'},
-      { title: 'Service Connect', component: Serviceconnect ,icon: 'filing'},
+      { title: 'Serviceconnect', component: Serviceconnect ,icon: 'filing'},
       { title: 'Deals', component: Deals ,icon: 'logo-designernews'},
       { title: 'Profile', component: Profile ,icon: 'bowtie'},
       { title: 'Settings', component: Setting ,icon: 'cog'}

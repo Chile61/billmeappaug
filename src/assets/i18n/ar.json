@@ -45,6 +45,24 @@
 
     "WalletPageTitle":"محفظة نقود",
 
-    "working":"العمل"
+    "working":"العمل",
+
+    "Menu":{
+        "Dashboard":"لوحة القيادة",
+        "Bills":"فواتير",
+        "Categories":"فئات بيل",
+        "Wallet":"محفظة نقود",
+        "Serviceconnect":"خدمة الاتصال",
+        "Deals":"صفقات",
+        "Profile":"الملف الشخصي",
+        "Settings":"ضبط"
+    },
+    
+    "WalletBalancePageTitle":"Wallet Balance",
+    
+    "WalletExpenditurePageTitle":"Wallet Expenditure",
+    
+    "WalletPurchasePageTitle":"Wallet Purchase"
+
 
 }

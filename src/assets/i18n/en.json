@@ -45,6 +45,23 @@
 
     "WalletPageTitle":"Wallet",
 
-    "working":"Working"
+    "working":"Working",
+
+    "Menu":{
+        "Dashboard":"Dashboard",
+        "Bills":"Bills",
+        "Categories":"Categories",
+        "Wallet":"Wallet",
+        "Serviceconnect":"Service connect",
+        "Deals":"Deals",
+        "Profile":"Profile",
+        "Settings":"Settings"
+    },
+    
+    "WalletBalancePageTitle":"Wallet Balance",
+    
+    "WalletExpenditurePageTitle":"Wallet Expenditure",
+    
+    "WalletPurchasePageTitle":"Wallet Purchase"
 
 }

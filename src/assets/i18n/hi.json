@@ -3,7 +3,7 @@
 
     "DashboardPageTitle":"डैशबोर्ड",
     "DashboardPageTotalExpenditure":"कुल व्यय",
-    "DashboardPageWallet":"बटुआ बैलेंस",
+    "DashboardPageWallet":"वॉलेट बैलेंस",
     "DashboardPageEbills":"ई-बिल प्राप्त",
     "DashboardPageBillsDue":"देय बिल",
     "DashboardPageMostRecentBills":"सबसे हालिया बिल",
@@ -58,10 +58,21 @@
         "Settings":"सेटिंग"
     },
     
-    "WalletBalancePageTitle":"Wallet Balance",
+    "WalletBalancePageTitle":"वॉलेट बैलेंस",
     
-    "WalletExpenditurePageTitle":"Wallet Expenditure",
+    "WalletExpenditurePageTitle":"वॉलेट व्यय",
     
-    "WalletPurchasePageTitle":"Wallet Purchase"
+    "WalletPurchasePageTitle":"वॉलेट खरीद फरोख्त",
+    
+    "Colors":{
+        "Default":"डिफॉल्ट",
+        "Avenger":"अवेन्जर",
+        "Primary":"प्राइमेरी",
+        "Secondary":"सेकन्डेरी",
+        "Danger":"डेन्जर / डैन्जर",
+        "Dark":"डार्क",
+        "Themed":"थीम्ड",
+        "Glee":"बैंगनी"
+    }
 
 }

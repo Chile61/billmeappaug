@@ -38,7 +38,7 @@
         <ion-list>
           <ion-item *ngFor="let item of piccolors"  (click)="changeColor(item.color)">
             <ion-icon name="{{item.icon}}" item-start></ion-icon>
-              {{item.name}}
+              {{ 'Colors.'+item.name | translate }}
           </ion-item>
         </ion-list>
     </ion-card-content>

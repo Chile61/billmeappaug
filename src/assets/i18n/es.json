@@ -58,11 +58,22 @@
         "Settings":"Ajuste"
     },
 
-    "WalletBalancePageTitle":"Wallet Balance",
+    "WalletBalancePageTitle":"Saldo de Wallet",
     
-    "WalletExpenditurePageTitle":"Wallet Expenditure",
+    "WalletExpenditurePageTitle":"Gastos de Wallet",
     
-    "WalletPurchasePageTitle":"Wallet Purchase"
+    "WalletPurchasePageTitle":"Compra de Wallet",
+    
+    "Colors":{
+        "Default":"Defecto",
+        "Avenger":"Vengador",
+        "Primary":"Primario",
+        "Secondary":"Secundario",
+        "Danger":"Peligro",
+        "Dark":"oscuro",
+        "Themed":"Temático",
+        "Glee":"Púrpura"
+    }
 
 
 }

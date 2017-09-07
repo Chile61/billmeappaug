@@ -62,6 +62,17 @@
     
     "WalletExpenditurePageTitle":"Wallet Expenditure",
     
-    "WalletPurchasePageTitle":"Wallet Purchase"
+    "WalletPurchasePageTitle":"Wallet Purchase",
+
+    "Colors":{
+        "Default":"Default",
+        "Avenger":"Avenger",
+        "Primary":"Primary",
+        "Secondary":"Secondary",
+        "Danger":"Danger",
+        "Dark":"Dark",
+        "Themed":"Themed",
+        "Glee":"Purple"
+    }
 
 }

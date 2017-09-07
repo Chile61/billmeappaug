@@ -58,11 +58,22 @@
         "Settings":"ضبط"
     },
     
-    "WalletBalancePageTitle":"Wallet Balance",
+    "WalletBalancePageTitle":"رصيد المحفظة",
     
-    "WalletExpenditurePageTitle":"Wallet Expenditure",
+    "WalletExpenditurePageTitle":"نفقات المحفظة",
     
-    "WalletPurchasePageTitle":"Wallet Purchase"
+    "WalletPurchasePageTitle":"شراء المحفظة",
+    
+    "Colors":{
+        "Default":"افتراضي",
+        "Avenger":"منتقم",
+        "Primary":"ابتدائي",
+        "Secondary":"ثانوي",
+        "Danger":"خطر",
+        "Dark":"داكن",
+        "Themed":"تحت عنوان",
+        "Glee":"أرجواني"
+    }
 
 
 }

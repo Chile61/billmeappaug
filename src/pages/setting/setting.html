@@ -25,7 +25,7 @@
 
   <ion-item>
     <ion-label>{{ "SettingPageBMLang" | translate }}</ion-label>
-    <ion-select [(ngModel)]="language" submitText="Done" cancelText="Cancel" (ngModelChange)="changeLanguage()">
+    <ion-select [(ngModel)]="language" okText="{{'SelectDone'|translate}}" cancelText="{{'SelectCancel'|translate}}" (ngModelChange)="changeLanguage()">
       <ion-option *ngFor="let l of alllang" value="{{l.code}}">{{l.name}}</ion-option>
     </ion-select>
   </ion-item>

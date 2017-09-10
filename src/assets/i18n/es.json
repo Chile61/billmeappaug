@@ -76,6 +76,33 @@
     },
 
     "ComponentErrorNetwork":"La red está ocupada",
-    "ComponentErrorNetworkUnavailable":"La red no está disponible"
+    "ComponentErrorNetworkUnavailable":"La red no está disponible",
+    "ComponentMsgCamera":"Cámara",
+    "ComponentMsgGallery":"Galería",
+    "ComponentMsgPickerTitle":"Pic Your Profile Opciones de imagen",
+    "ComponentMsgPickerDismiss":"Despedir",
+    "ComponentMsgDownloading":"Descargando...",
+    "ComponentMsgDownloadingBill":"Descargar proyecto de ley...",
+    "ComponentMsgDownloadingBillToast":"¡Descargado con éxito! Guardado en almacenamiento.",
+    "ComponentMsgDownloadingLocalNotify":"Proyecto de ley Descargado completado!",
+    "ComponentMsgDownloadingLocalNotifySavedAt":"Guardado en la carpeta Billme",
+    "ComponentMsgDownloadingLocalError1":"No se puede descargar la factura, vuelve a intentarlo más tarde.",
+    "ComponentMsgDownloadingLocalError2":"Bill no puede descargar completamente, vuelve a intentarlo.",
+    "ComponentMsgDownloadingLocalError3":"Bill no se puede descargar, vuelve a intentarlo.",
+    "ComponentMsgDownloadComplete":"¡Descarga completa!",
+    "ComponentMsgReceiptBill":"Cuenta",
+    
+    "ComponentMsgSettingSignout":"desconectar",
+    "ComponentMsgSettingSignoutMsg":"¿Seguro que quieres cerrar la sesión?",
+    "ComponentMsgSettingCancel":"Cancelar",
+    "ComponentMsgSettingProceed":"Proceder",
+    "ComponentMsgSettingConfirmDelete":"Confirmar para eliminar la cuenta",
+    "ComponentMsgSettingConfirmDeleteMsg":"¿Realmente desea eliminar la cuenta de BillMe, todos los datos se eliminarán?",
+    "ComponentMsgSettingBtnNo":"No",
+    "ComponentMsgSettingBtnYes":"Sí",
+    "ComponentMsgSettingBtnYesMsg":"Esta función estará disponible próximamente",
+    
+    "SelectDone":"De acuerdo",
+    "SelectCancel":"Cancelar"
 
 }

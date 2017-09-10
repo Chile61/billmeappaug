@@ -76,6 +76,33 @@
     },
 
     "ComponentErrorNetwork":"Network is busy",
-    "ComponentErrorNetworkUnavailable":"Network is unavailable"
+    "ComponentErrorNetworkUnavailable":"Network is unavailable",
+    "ComponentMsgCamera":"Camera",
+    "ComponentMsgGallery":"Gallery",
+    "ComponentMsgPickerTitle":"Pic Your Profile Picture Options",
+    "ComponentMsgPickerDismiss":"Dismiss",
+    "ComponentMsgDownloading":"Downloading...",
+    "ComponentMsgDownloadingBill":"Downloading Bill...",
+    "ComponentMsgDownloadingBillToast":"Downloaded successfully! Saved in storage.",
+    "ComponentMsgDownloadingLocalNotify":"Bill Download completed!",
+    "ComponentMsgDownloadingLocalNotifySavedAt":"Saved at Billme folder",
+    "ComponentMsgDownloadingLocalError1":"Bill can not be downloaded, try again later.",
+    "ComponentMsgDownloadingLocalError2":"Bill not able to download completely, try again.",
+    "ComponentMsgDownloadingLocalError3":"Bill can not be downloaded, try again.",
+    "ComponentMsgDownloadComplete":"Download completed!",
+    "ComponentMsgReceiptBill":"Bill",
+
+    "ComponentMsgSettingSignout":"Sign out",
+    "ComponentMsgSettingSignoutMsg":"Are you sure want to logout?",
+    "ComponentMsgSettingCancel":"Cancel",
+    "ComponentMsgSettingProceed":"Proceed",
+    "ComponentMsgSettingConfirmDelete":"Confirm to delete account",
+    "ComponentMsgSettingConfirmDeleteMsg":"Do you really want to delete account from BillMe, All data will be deleted?",
+    "ComponentMsgSettingBtnNo":"No",
+    "ComponentMsgSettingBtnYes":"Yes",
+    "ComponentMsgSettingBtnYesMsg":"This feature will be available soon",
+
+    "SelectDone":"Ok",
+    "SelectCancel":"Cancel"
 
 }

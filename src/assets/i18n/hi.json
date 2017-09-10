@@ -76,5 +76,32 @@
     },
 
     "ComponentErrorNetwork":"नेटवर्क व्यस्त है",
-    "ComponentErrorNetworkUnavailable":"नेटवर्क अनुपलब्ध है"
+    "ComponentErrorNetworkUnavailable":"नेटवर्क अनुपलब्ध है",
+    "ComponentMsgCamera":"कैमरा",
+    "ComponentMsgGallery":"गेलरी",
+    "ComponentMsgPickerTitle":"आपकी प्रोफ़ाइल चित्र विकल्प को ढूंढें",
+    "ComponentMsgPickerDismiss":"खारिज",
+    "ComponentMsgDownloading":"डाउनलोड कर रहा है...",
+    "ComponentMsgDownloadingBill":"बिल डाउनलोड कर रहा है...",
+    "ComponentMsgDownloadingBillToast":"डाउनलोड सफलतापूर्वक! भंडारण में सहेजा गया|",
+    "ComponentMsgDownloadingLocalNotify":"बिल डाउनलोड पूर्ण!",
+    "ComponentMsgDownloadingLocalNotifySavedAt":"बिलमे फोल्डर पर सहेजा गया",
+    "ComponentMsgDownloadingLocalError1":"बिल डाउनलोड नहीं किया जा सकता, बाद में फिर से प्रयास करें।",
+    "ComponentMsgDownloadingLocalError2":"विधेयक पूरी तरह से डाउनलोड करने में सक्षम नहीं है, पुनः प्रयास करें।",
+    "ComponentMsgDownloadingLocalError3":"बिल डाउनलोड नहीं किया जा सकता, फिर से प्रयास करें|",
+    "ComponentMsgDownloadComplete":"पूरा डाउनलोड!",
+    "ComponentMsgReceiptBill":"बिल",
+    
+    "ComponentMsgSettingSignout":"साइन आउट",
+    "ComponentMsgSettingSignoutMsg":"क्या आप निश्चित रूप से लॉगआउट करना चाहते हैं?",
+    "ComponentMsgSettingCancel":"रद्द करना",
+    "ComponentMsgSettingProceed":"कार्यवाही करना",
+    "ComponentMsgSettingConfirmDelete":"खाता हटाने की पुष्टि करें",
+    "ComponentMsgSettingConfirmDeleteMsg":"क्या आप वास्तव में बिलमे से खाते को हटाना चाहते हैं, सभी डेटा हटा दिए जाएंगे?",
+    "ComponentMsgSettingBtnNo":"नहीं",
+    "ComponentMsgSettingBtnYes":"हाँ",
+    "ComponentMsgSettingBtnYesMsg":"यह सुविधा जल्द ही उपलब्ध होगी",
+    
+    "SelectDone":"ठीक",
+    "SelectCancel":"रद्द करना"
 }

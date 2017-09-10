@@ -10,6 +10,8 @@ import { Applanguage } from '../services/applanguage';
 import { TranslateService } from '@ngx-translate/core';
 
 import { MyApp } from '../../app/app.component';
+
+import { Msgresponse } from '../services/msgresponse';
 /*
   Generated class for the Setting page.
 
@@ -19,7 +21,7 @@ import { MyApp } from '../../app/app.component';
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html',
-  providers:[Titlecolors,Applanguage]
+  providers:[Titlecolors,Applanguage,Msgresponse]
 })
 export class Setting {
 
@@ -37,7 +39,8 @@ export class Setting {
     public titleServ:Titlecolors,
     public applanguage:Applanguage,
     public alertCtrl:AlertController,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public msgresponse:Msgresponse
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -79,18 +82,18 @@ export class Setting {
 
   signout(){
     let alert = this.alertCtrl.create({
-      title: 'Sign out',
-      message: 'Are you sure want to logout?',
+      title: this.msgresponse.callMsgSettingSignout(),
+      message: this.msgresponse.callMsgSettingSignoutMsg(),
       buttons: [
         {
-          text: 'Cancel',
+          text: this.msgresponse.callMsgSettingCancel(),
           role: 'cancel',
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Proceed',
+          text: this.msgresponse.callMsgSettingProceed(),
           handler: () => {
             localStorage.setItem("billmeIn","N");
             console.log('Proceed clicked');
@@ -105,21 +108,21 @@ export class Setting {
 
   deleteacc(){
     let alert = this.alertCtrl.create({
-      title: 'Confirm to delete account',
-      message: 'Do you really want to delete account from BillMe, All data will be deleted?',
+      title: this.msgresponse.callMsgSettingConfirmDelete(),
+      message: this.msgresponse.callMsgSettingConfirmDeleteMsg(),
       buttons: [
         {
-          text: 'No',
+          text: this.msgresponse.callMsgSettingBtnNo(),
           role: 'cancel',
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Yes',
+          text: this.msgresponse.callMsgSettingBtnYes(),
           handler: () => {
             this.toastCtrl.create({
-              message:"This feature will be available soon",position:'bottom',duration:2500
+              message:this.msgresponse.callMsgSettingBtnYesMsg(),position:'bottom',duration:2500
             }).present();
           }
         }

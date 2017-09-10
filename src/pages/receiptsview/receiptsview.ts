@@ -18,6 +18,8 @@ import { Billviewpdf } from '../billviewpdf/billviewpdf';
 import { Receiptprovider } from '../../providers/receiptprovider';
 
 import * as moment from 'moment';
+
+import { Msgresponse } from '../services/msgresponse';
 declare var cordova:any;
 /*
   Generated class for the Receiptsview page.
@@ -28,7 +30,7 @@ declare var cordova:any;
 @Component({
   selector: 'page-receiptsview',
   templateUrl: 'receiptsview.html',
-  providers:[Receiptprovider]
+  providers:[Receiptprovider,Msgresponse]
 })
 export class Receiptsview {
 
@@ -58,7 +60,8 @@ export class Receiptsview {
     public navParams: NavParams,
     public iab: InAppBrowser,
     public rp:Receiptprovider,
-    public photoViewer:PhotoViewer
+    public photoViewer:PhotoViewer,
+    public msgresponse: Msgresponse
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -181,7 +184,7 @@ export class Receiptsview {
     //const fs:string = cordova.file.externalRootDirectory+"Billme";
 
     let loading = this.loadCtrl.create({ 
-      content: 'Downloading...'
+      content: this.msgresponse.callMsgDownloading()
     });
     loading.present();
     const fileTransfer: FileTransferObject = this.transfer.create();//important
@@ -192,7 +195,7 @@ export class Receiptsview {
     //let path = cordova.file.externalRootDirectory+"Billme/" + name;
     this.localNotifications.schedule({
         id: 1,
-        title:'Downloading Bill...',
+        title:this.msgresponse.callMsgDownloadingBill(),
         icon: 'assets/images/logo.png',
         smallIcon: 'assets/images/logo.png'
       });
@@ -225,29 +228,29 @@ export class Receiptsview {
                   //console.log('download complete: ' + entry.toURL());
                   
                   this.toastCtrl.create({
-                        message:"Downloaded successfully! Saved in storage.",
+                        message:this.msgresponse.callMsgDownloadingBillToast(),
                         duration:2000,
                         position:'middle'
                       }).present();
                       //alert(JSON.stringify(entry));
                   this.localNotifications.schedule({
                     id: 1,
-                    title:'Bill Download completed!',
-                    text: 'Saved at Billme folder '+name,
+                    title:this.msgresponse.callMsgDownloadingLocalNotify(),
+                    text: this.msgresponse.callMsgDownloadingLocalNotifySavedAt()+' '+name,
                     icon: 'assets/images/logo.png',
                     smallIcon: 'assets/images/logo.png'
                   });
                 }, (error) => {
                   //loading.dismiss();
                   this.toastCtrl.create({
-                        message:"Bill can not be downloaded, try again later.",
+                        message:this.msgresponse.callMsgDownloadingLocalNotifyError1(),
                         duration:2000,
                         position:'top'
                       }).present();
                       //alert(JSON.stringify(error));
                       this.localNotifications.schedule({
                         id: 1,
-                        title:'Bill not able to download completely, try again',
+                        title:this.msgresponse.callMsgDownloadingLocalNotifyError2(),
                         icon: 'assets/images/logo.png',
                         smallIcon: 'assets/images/logo.png'
                       });
@@ -255,7 +258,7 @@ export class Receiptsview {
               }else{
                 //loading.dismiss();
                 this.toastCtrl.create({
-                        message:"Bill can not be downloaded, try again.",
+                        message:this.msgresponse.callMsgDownloadingLocalNotifyError3(),
                         duration:2000,
                         position:'top'
                       }).present();
@@ -266,7 +269,7 @@ export class Receiptsview {
               loading.dismiss();
               //alert(JSON.stringify(error));
               this.toastCtrl.create({
-                    message:"Bill can not be downloaded, Try again.",
+                    message:this.msgresponse.callMsgDownloadingLocalNotifyError3(),
                     duration:2000,
                     position:'top'
                   }).present();
@@ -282,29 +285,29 @@ export class Receiptsview {
           //console.log('download complete: ' + entry.toURL());
           loading.dismiss();
           this.toastCtrl.create({
-                message:"Downloaded successfully! Saved in storage.",
+                message:this.msgresponse.callMsgDownloadingBillToast(),
                 duration:2000,
                 position:'middle'
               }).present();
               //alert(JSON.stringify(entry));
           this.localNotifications.schedule({
             id: 1,
-            title:'Bill Download completed!',
-            text: 'Saved at Billme folder '+name,
+            title:this.msgresponse.callMsgDownloadingLocalNotify(),
+            text: this.msgresponse.callMsgDownloadingLocalNotifySavedAt()+' '+name,
             icon: 'assets/images/logo.png',
             smallIcon: 'assets/images/logo.png'
           });
         }, (error) => {
           loading.dismiss();
           this.toastCtrl.create({
-                message:"Bill can not be downloaded, try again.",
+                message:this.msgresponse.callMsgDownloadingLocalNotifyError1(),
                 duration:2000,
                 position:'top'
               }).present();
               //alert(JSON.stringify(error));
               this.localNotifications.schedule({
                 id: 1,
-                title:'Bill not able to download completely, try again',
+                title:this.msgresponse.callMsgDownloadingLocalNotifyError2(),
                 icon: 'assets/images/logo.png',
                 smallIcon: 'assets/images/logo.png'
               });
@@ -325,7 +328,7 @@ export class Receiptsview {
     fileTransfer.download(url, this.file.dataDirectory + name).then((entry) => {
       //console.log('download complete: ' + entry.toURL());
       this.toastCtrl.create({
-            message:"Download completed!",
+            message:this.msgresponse.callMsgDownloadComplete(),
             duration:2500,
             position:'middle'
           }).present();
@@ -360,7 +363,7 @@ export class Receiptsview {
 
   viewpdf2(){
     const options: DocumentViewerOptions = {
-      title: 'Bill '+this.navbillName,
+      title: this.msgresponse.callMsgReceiptBill()+' '+this.navbillName,
       email: {enabled:true},
       print:{enabled:true}
     }

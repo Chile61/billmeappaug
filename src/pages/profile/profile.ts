@@ -5,7 +5,7 @@ import { LoadingController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-import { TranslateService } from '@ngx-translate/core';
+import { Msgresponse } from '../services/msgresponse';
 
 import * as moment from 'moment';
 //import { service } from '../services/service';
@@ -23,7 +23,7 @@ import { Userprovider } from '../../providers/userprovider';
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
-  providers:[Userprovider]
+  providers:[Userprovider,Msgresponse]
 })
 export class Profile {
   d:any;
@@ -33,6 +33,7 @@ export class Profile {
   ujoin:any;ugender:string;utoken:any;upic:any;ucreated:any;
 
   errorNetwork:any;
+  errorNetworkUnavailable:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -40,7 +41,7 @@ export class Profile {
     public actionCtrl:ActionSheetController,public up:Userprovider,//public dbs:Dbservice,
     public loadCtrl:LoadingController,
     public camera:Camera,
-    public translateService: TranslateService
+    public mr: Msgresponse
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -56,12 +57,8 @@ export class Profile {
   }
 
   ionViewDidLoad() {
-    this.translateService.get('ComponentErrorNetwork').subscribe(
-      value => {
-        this.errorNetwork = value;
-        console.log(this.errorNetwork);
-      }
-    );
+    this.errorNetwork = this.mr.callErrorNetwork();
+    this.errorNetworkUnavailable = this.mr.callErrorNetworkUnavailable();
     console.log('ionViewDidLoad ProfilePage');
   }
 
@@ -106,7 +103,7 @@ export class Profile {
     },
     (error)=>{
       this.toastCtrl.create({
-          message:"Network is unavailable",duration:2000,position:'top'
+          message:this.errorNetworkUnavailable,duration:2000,position:'top'
       }).present();
       loading.dismiss();
       console.error(error);
@@ -116,24 +113,24 @@ export class Profile {
 
   changePicture(){
     this.actionCtrl.create({
-      title:"Pic Your Profile Picture Options",
+      title:this.mr.callMsgPickerTitle(),
       buttons:[
         {
-          text:'Camera',
+          text:this.mr.callMsgCamera(),
           handler:()=>{
             console.info("Camera");
             this.chooseCamera();
           }
         },
         {
-          text:'Gallery',
+          text:this.mr.callMsgGallery(),
           handler:()=>{
             console.info("Gallery");
             this.chooseGallery();
           }
         },
         {
-          text:'Dismiss',
+          text:this.mr.callMsgPickerDismiss(),
           role:'cancel',
           handler:()=>{
             console.warn("Dismiss");
@@ -224,7 +221,7 @@ export class Profile {
           }).present();
         }else{
           this.toastCtrl.create({
-              message:"Network is busy",duration:2000,position:'top'
+              message:this.errorNetwork,duration:2000,position:'top'
           }).present();
         }
         loading.dismiss();
@@ -232,7 +229,7 @@ export class Profile {
       (error)=>{
         let m = JSON.stringify(error);
         this.toastCtrl.create({
-            message:"Network is unavailable",duration:2000,position:'top'
+            message:this.errorNetworkUnavailable,duration:2000,position:'top'
         }).present();
         loading.dismiss();
       }

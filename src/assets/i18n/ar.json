@@ -76,7 +76,34 @@
     },
 
     "ComponentErrorNetwork":"الشبكة مشغولة",
-    "ComponentErrorNetworkUnavailable":"الشبكة غير متاحة"
+    "ComponentErrorNetworkUnavailable":"الشبكة غير متاحة",
+    "ComponentMsgCamera":"الة تصوير",
+    "ComponentMsgGallery":"صالة عرض",
+    "ComponentMsgPickerTitle":"بيك خيارات صورة الملف الشخصي",
+    "ComponentMsgPickerDismiss":"رفض",
+    "ComponentMsgDownloading":"جارى التحميل...",
+    "ComponentMsgDownloadingBill":"تحميل بيل...",
+    "ComponentMsgDownloadingBillToast":"تم التنزيل بنجاح! تم الحفظ في وحدة التخزين.",
+    "ComponentMsgDownloadingLocalNotify":"فاتورة تحميل اكتمال!",
+    "ComponentMsgDownloadingLocalNotifySavedAt":"المحفوظة في مجلد بيلم",
+    "ComponentMsgDownloadingLocalError1":"لا يمكن تنزيل الفاتورة، أعد المحاولة لاحقا.",
+    "ComponentMsgDownloadingLocalError2":"بيل غير قادر على تحميل تماما، حاول مرة أخرى.",
+    "ComponentMsgDownloadingLocalError3":"لا يمكن تحميل بيل، حاول مرة أخرى.",
+    "ComponentMsgDownloadComplete":"انتها التحميل!",
+    "ComponentMsgReceiptBill":"مشروع قانون",
+    
+    "ComponentMsgSettingSignout":"خروج",
+    "ComponentMsgSettingSignoutMsg":"هل تريد بالتأكيد الخروج؟",
+    "ComponentMsgSettingCancel":"إلغاء",
+    "ComponentMsgSettingProceed":"تقدم",
+    "ComponentMsgSettingConfirmDelete":"تأكيد حذف الحساب",
+    "ComponentMsgSettingConfirmDeleteMsg":"هل تريد حقا حذف حساب من بيلم، سيتم حذف جميع البيانات؟",
+    "ComponentMsgSettingBtnNo":"لا",
+    "ComponentMsgSettingBtnYes":"نعم فعلا",
+    "ComponentMsgSettingBtnYesMsg":"وستتوفر هذه الميزة قريبا",
+
+    "SelectDone":"حسنا",
+    "SelectCancel":"إلغاء"
 
 
 }

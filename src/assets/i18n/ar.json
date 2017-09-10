@@ -73,7 +73,10 @@
         "Dark":"داكن",
         "Themed":"تحت عنوان",
         "Glee":"أرجواني"
-    }
+    },
+
+    "ComponentErrorNetwork":"الشبكة مشغولة",
+    "ComponentErrorNetworkUnavailable":"الشبكة غير متاحة"
 
 
 }

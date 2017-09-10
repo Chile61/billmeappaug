@@ -73,7 +73,10 @@
         "Dark":"डार्क",
         "Themed":"थीम्ड",
         "Glee":"जांभळे"
-    }
+    },
+
+    "ComponentErrorNetwork":"नेटवर्क व्यस्त आहे",
+    "ComponentErrorNetworkUnavailable":"Network is unavailable"
 
 
 }

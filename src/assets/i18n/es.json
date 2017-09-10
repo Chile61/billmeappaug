@@ -73,7 +73,9 @@
         "Dark":"oscuro",
         "Themed":"Temático",
         "Glee":"Púrpura"
-    }
+    },
 
+    "ComponentErrorNetwork":"La red está ocupada",
+    "ComponentErrorNetworkUnavailable":"La red no está disponible"
 
 }

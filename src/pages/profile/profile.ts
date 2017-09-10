@@ -5,6 +5,8 @@ import { LoadingController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import * as moment from 'moment';
 //import { service } from '../services/service';
 //import { Http,Response } from '@angular/http';
@@ -30,13 +32,15 @@ export class Profile {
   uname:string;usname:string;username:string;uemail:any;uaddress:any;ucontact:any;uccode:any;
   ujoin:any;ugender:string;utoken:any;upic:any;ucreated:any;
 
+  errorNetwork:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public toastCtrl:ToastController,
     public actionCtrl:ActionSheetController,public up:Userprovider,//public dbs:Dbservice,
     public loadCtrl:LoadingController,
-    public camera:Camera
+    public camera:Camera,
+    public translateService: TranslateService
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -52,6 +56,12 @@ export class Profile {
   }
 
   ionViewDidLoad() {
+    this.translateService.get('ComponentErrorNetwork').subscribe(
+      value => {
+        this.errorNetwork = value;
+        console.log(this.errorNetwork);
+      }
+    );
     console.log('ionViewDidLoad ProfilePage');
   }
 
@@ -89,7 +99,7 @@ export class Profile {
         this.upic = d.profilePic?d.profilePic:'assets/images/bg3.png';
       }else{
         this.toastCtrl.create({
-            message:"Network is busy",duration:2000,position:'top'
+            message:this.errorNetwork,duration:2000,position:'top'
         }).present();
       }
             loading.dismiss();

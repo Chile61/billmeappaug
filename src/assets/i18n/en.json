@@ -73,6 +73,9 @@
         "Dark":"Dark",
         "Themed":"Themed",
         "Glee":"Purple"
-    }
+    },
+
+    "ComponentErrorNetwork":"Network is busy",
+    "ComponentErrorNetworkUnavailable":"Network is unavailable"
 
 }

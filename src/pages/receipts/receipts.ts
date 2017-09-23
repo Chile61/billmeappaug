@@ -105,6 +105,9 @@ export class Receipts {
     // Reset items back to all of the items
     this.filterlist();
 
+    var q = ev.target.value;
+    console.log(q+" "+ev.target.value);
+    
     // set val to the value of the ev target
     var val = ev.target.value;
 
@@ -112,8 +115,26 @@ export class Receipts {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.bills = this.bills.filter((item) => {
-        //console.log(item);
-        return ((item.billName).toLowerCase().indexOf(val.toLowerCase()) > -1);
+        
+        let callto = item.billName;
+
+        let aa = item.description;
+        if(aa == null){
+          //console.log(item.description+" ");
+        }else{
+          let asd = (item.description).toString().replace(/\\n/g, '').trim();
+          //console.log(asd+" ");
+          var f = (asd).search(val);
+          if(f == -1){
+            //console.log("fail");
+          }else{
+            //console.warn("called");
+            callto = asd;
+          }
+        }
+        
+        //return ((item.billName).toLowerCase().indexOf(val.toLowerCase()) > -1 || (callto).toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ((callto).toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }

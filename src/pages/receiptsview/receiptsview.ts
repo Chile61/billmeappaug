@@ -223,6 +223,7 @@ export class Receiptsview {
               if(dt.status == "success"){
                 let path = dt.path;
                //loading.dismiss();
+               console.log(JSON.stringify(result));
                //alert(JSON.stringify(result));
                 fileTransfer.download(path, cordova.file.externalRootDirectory+"Billme/Bills/" + name).then((entry) => {
                   //console.log('download complete: ' + entry.toURL());

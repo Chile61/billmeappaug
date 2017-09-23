@@ -97,8 +97,8 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.pic = "assets/images/person.png";
-      localStorage.setItem("appUrl","http://www.podargroup.com/billmemobileapp/api/mobile");
-
+      //localStorage.setItem("appUrl","http://www.podargroup.com/billmemobileapp/api/mobile");
+      localStorage.setItem("appUrl","http://www.koperkhairne.com/billme_dev/billmemobileapp/api/mobile");
       this.globalization.getPreferredLanguage()
       .then(res => console.log(res))
       .catch(e => console.log(e));

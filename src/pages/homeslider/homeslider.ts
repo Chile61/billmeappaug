@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, ViewController } from 'ionic-angular';
 
 import { MyApp } from '../../app/app.component';
 /**
@@ -16,7 +17,12 @@ import { MyApp } from '../../app/app.component';
 export class Homeslider {
   homeOptions:any;
   slides:Array<{}>;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public appCtrl:App
+  ) {
     this.loadSlides();
   }
 
@@ -26,7 +32,7 @@ export class Homeslider {
 
   loadSlides(){
     this.slides = [
-      {id:1,image:'assets/images/logo.png',title:'Bill me',description:'Lets start with bill me!',bg:'#0372b2',titlebar:'#0372b2'},
+      {id:1,image:'assets/images/logo.png',title:'Bill me',description:'Lets start with bill me!',bg:'#fff',titlebar:'#fff'},
       {id:2,image:'assets/images/2.png',title:'Utilize',description:'Load your bill with bill me!',bg:'#fff',titlebar:'#fff'},
       {id:3,image:'assets/images/3.png',title:'Safer',description:'Make safe your every transactions!',bg:'#fff',titlebar:'#fff'}
     ];
@@ -39,7 +45,12 @@ export class Homeslider {
 
   continue(){
     localStorage.setItem('billmeSeenSlider',"Y");
-    this.navCtrl.push(MyApp);
+    //this.navCtrl.push(MyApp);
+
+    // this.viewCtrl.dismiss();
+    // this.appCtrl.getRootNav().push(MyApp);
+
+    this.navCtrl.setRoot(MyApp);
   }
 
 }

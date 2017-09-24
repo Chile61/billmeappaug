@@ -6,6 +6,7 @@ import { AlertController } from 'ionic-angular';
 
 import { Titlecolors } from '../services/titlecolors';
 import { Applanguage } from '../services/applanguage';
+import { Currencies } from '../services/currencies';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -21,7 +22,7 @@ import { Msgresponse } from '../services/msgresponse';
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html',
-  providers:[Titlecolors,Applanguage,Msgresponse]
+  providers:[Titlecolors,Applanguage,Msgresponse,Currencies]
 })
 export class Setting {
 
@@ -31,6 +32,8 @@ export class Setting {
 
   language:any;
   alllang:any;
+  currency:any;
+  selectcurrency:any;
 
   constructor(
     public navCtrl: NavController, 
@@ -40,7 +43,8 @@ export class Setting {
     public applanguage:Applanguage,
     public alertCtrl:AlertController,
     public translate: TranslateService,
-    public msgresponse:Msgresponse
+    public msgresponse:Msgresponse,
+    public currencies:Currencies
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -51,6 +55,8 @@ export class Setting {
       this.makevisible = false;
 
       this.piccolors = this.titleServ.piccolors();
+
+      this.selectcurrency = 2;
     }
 
   ionViewDidLoad() {
@@ -58,6 +64,7 @@ export class Setting {
     this.language = localStorage.getItem("billmeAppLanguage");
     this.translate.setDefaultLang(this.language);
     this.alllang = this.applanguage.listlanguages();
+    this.currency = this.currencies.listcurrencies();
   }
 
   changevisibility(){
@@ -97,7 +104,8 @@ export class Setting {
           handler: () => {
             localStorage.setItem("billmeIn","N");
             console.log('Proceed clicked');
-            this.navCtrl.push(MyApp);
+            //this.navCtrl.push(MyApp);
+            this.navCtrl.setRoot(MyApp);
           }
         }
       ]

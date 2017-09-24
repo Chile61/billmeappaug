@@ -30,7 +30,7 @@
     </ion-select>
   </ion-item>
 
-  <ion-card class="setic">
+  <!-- <ion-card class="setic">
       <ion-card-header>
         {{ "SettingPageCATheme" | translate }}
       </ion-card-header>
@@ -42,7 +42,17 @@
           </ion-item>
         </ion-list>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
+
+  <ion-item>
+    <ion-label>
+      Currency
+      <!-- {{ "SettingPageBMLang" | translate }} -->
+    </ion-label>
+    <ion-select interface="action-sheet" [(ngModel)]="selectcurrency">
+      <ion-option *ngFor="let l of currency" value="{{l.id}}">{{l.symbol+' '+l.name}}</ion-option>
+    </ion-select>
+  </ion-item>
 
   <button ion-button round block color="danger" (click)="signout()">{{ "SettingPageSignOut" | translate }}</button>
 

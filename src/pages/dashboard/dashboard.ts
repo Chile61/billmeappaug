@@ -7,6 +7,10 @@ import { Receiptprovider } from '../../providers/receiptprovider';
 import { Receiptsview } from "../receiptsview/receiptsview";
 import { Billviewpdf } from '../billviewpdf/billviewpdf';
 
+import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 import * as moment from 'moment';
 declare var cordova:any;
 /*
@@ -38,7 +42,10 @@ export class Dashboard {
     public navParams: NavParams,
     public loadCtrl:LoadingController,
     public rp:Receiptprovider,
-    public iab: InAppBrowser
+    public iab: InAppBrowser,
+    public photoViewer:PhotoViewer,
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController
   ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -162,7 +169,7 @@ export class Dashboard {
   }
 
   //open bills accordingly
-  openBill(d){
+  openBillold(d){
     let rd = {"id":d.id,"userID":d.userID,"categoryID":d.categoryID,"vendorID":d.vendorID,"billName":d.billName,"name":d.billName,"amount":d.amount,"amountCurrency":d.amountCurrency,"description":d.description,"buyedAt":d.buyedAt,"billNo":d.billNo,"billPDF":d.billPDF,"payedStatus":d.payedStatus,"payedBy":d.payedBy,"time":d.time,"isActive":d.isActive,"created_at":d.created_at,"updated_at":d.updated_at};
     console.log(JSON.stringify(d)+"callthisReceipt()");
     this.navCtrl.push(Receiptsview,rd);
@@ -216,4 +223,58 @@ export class Dashboard {
     //});
   }
 
+  becomevendor(){
+    let prompt = this.alertCtrl.create({
+      title: 'Become an vendor',
+      message: "Add  a email id to become an vendor",
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'Email address'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: data => {
+            console.log(data);
+            let toast = this.toastCtrl.create({
+              message: 'Ok we contact you soon on email id '+data.email+'!',
+              duration: 2500,
+              position:'middle'
+            });
+            toast.present();
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+
+  //24sep2017
+  openBill(d){
+    let im = d.billPDF;
+    let liof = im.substr(im.lastIndexOf("/"));
+    let spl = liof.split(".");let pic = spl[1];
+    if(pic == "pdf" || pic == "PDF" || pic == "DOC" || pic == "doc" || pic == "docx" || pic == "DOCX"){
+      //pdf
+      let path = im;
+      let bname = d.billName+' '+d.buyedAt;
+      this.navCtrl.push(Billviewpdf,{
+        navpath:path,
+        navbillName:bname
+      });
+    }else{
+      //image
+      let name = d.billName+' '+d.buyedAt;
+      this.photoViewer.show(d.billPDF, name, {share: true});
+    }
+  }
 }

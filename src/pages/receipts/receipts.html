@@ -37,8 +37,14 @@
         <!--<h2>{{d.billNo}}</h2>
         <p>{{d.billName}}</p>-->
         <h4>{{d.billName + ' ' +d.billNo}}</h4>
-        <p>{{convert(d.buyedAt)}}</p>
-        <p><!--&#8377;--> {{d.amountCurrency+' '+d.amount}}/-</p>
+        <i>{{address?address:'Mumbai'}}</i>
+        <div class="addbillitemview">
+          <p class="addrsview"> {{convert(d.buyedAt)}}
+            </p>
+            <p class="billviewamnt"> {{d.amountCurrency+' '+d.amount}}/-</p>
+        </div>
+        <!-- <p>{{convert(d.buyedAt)}}</p> -->
+        <!-- <p>&#8377; {{d.amountCurrency+' '+d.amount}}/-</p> -->
         <!--<ion-note item-end>3:43 pm</ion-note>-->
       </div>
     </ion-item>

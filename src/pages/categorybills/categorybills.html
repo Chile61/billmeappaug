@@ -42,8 +42,14 @@
         <img src="assets/images/person.png">
       </ion-avatar>
       <h2>{{d.billName + ' ' +d.billNo}}</h2>
-      <h3>{{ "CategorybillsPageBAmnt" | translate }} {{d.amountCurrency}} {{d.amount}}/-</h3>
-      <p>{{convert(d.buyedAt)}}</p>
+      <!-- <h3>{{ "CategorybillsPageBAmnt" | translate }} {{d.amountCurrency}} {{d.amount}}/-</h3>
+      <p>{{convert(d.buyedAt)}}</p> -->
+      <i>{{address?address:'Mumbai'}}</i>
+      <div class="addbillitemview">
+        <p class="addrsview"> {{convert(d.buyedAt)}}
+          </p>
+          <p class="billviewamnt"> {{d.amountCurrency+' '+d.amount}}/-</p>
+      </div>
     </ion-item>
   </ion-list>
   </div>

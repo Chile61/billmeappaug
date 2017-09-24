@@ -31,4 +31,18 @@ page-categorybills {
         padding: 2%;
         opacity: 0.5;
     }
+
+    //24-sep-2017
+    .addbillitemview {
+        width: 100%;
+    }
+    p.addrsview {
+        width: 50%;
+        float: left;
+    }
+    p.billviewamnt {
+        width: 50%;
+        float: right;
+        text-align: end;
+    }
 }

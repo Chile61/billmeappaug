@@ -4,6 +4,9 @@ import { LoadingController } from 'ionic-angular';
 
 import { Categoriesprovider } from '../../providers/categoriesprovider';
 import { Receiptsview } from "../receiptsview/receiptsview";
+import { Billviewpdf } from '../billviewpdf/billviewpdf';
+
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 import * as moment from 'moment';
 /**
@@ -33,6 +36,7 @@ export class Categorybills {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public loadCtrl:LoadingController,
+    public photoViewer:PhotoViewer,
     public rp:Categoriesprovider
   ) {
     if(localStorage.getItem('AppTitleColor')){
@@ -97,10 +101,30 @@ export class Categorybills {
     );
   }
 
-  callthisReceipt(d){
+  callthisReceiptold(d){
     let rd = {"id":d.id,"userID":d.userID,"categoryID":d.categoryID,"vendorID":d.vendorID,"billName":d.billName,"name":d.billName,"amount":d.amount,"amountCurrency":d.amountCurrency,"description":d.description,"buyedAt":d.buyedAt,"billNo":d.billNo,"billPDF":d.billPDF,"payedStatus":d.payedStatus,"payedBy":d.payedBy,"time":d.time,"isActive":d.isActive,"created_at":d.created_at,"updated_at":d.updated_at};
     console.log(JSON.stringify(d)+"callthisReceipt()");
     this.navCtrl.push(Receiptsview,rd);
+  }
+
+  //24sep2017
+  callthisReceipt(d){
+    let im = d.billPDF;
+    let liof = im.substr(im.lastIndexOf("/"));
+    let spl = liof.split(".");let pic = spl[1];
+    if(pic == "pdf" || pic == "PDF" || pic == "DOC" || pic == "doc" || pic == "docx" || pic == "DOCX"){
+      //pdf
+      let path = im;
+      let bname = d.billName+' '+d.buyedAt;
+      this.navCtrl.push(Billviewpdf,{
+        navpath:path,
+        navbillName:bname
+      });
+    }else{
+      //image
+      let name = d.billName+' '+d.buyedAt;
+      this.photoViewer.show(d.billPDF, name, {share: true});
+    }
   }
 
   convert(ucreated){

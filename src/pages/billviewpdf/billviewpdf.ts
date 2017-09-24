@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the Billviewpdf page.
  *
@@ -17,9 +18,12 @@ export class Billviewpdf {
   pdfSrc: string;
   page: number;
   titleColor:string;
+
+  pdfname:any;
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams
+    public navParams: NavParams,
+    public toastCtrl: ToastController
   ) {
     if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -31,10 +35,35 @@ export class Billviewpdf {
     this.pdfSrc = this.navParams.get("navpath");
     console.log(this.pdfSrc);
     this.page = 1;
+    this.pdfname = this.navParams.get("navbillName");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Billviewpdf Page');
   }
 
+  fabmail(){
+    this.shareit();
+  }
+
+  fabgmail(){
+    this.shareit();
+  }
+
+  fabfb(){
+    this.shareit();
+  }
+
+  fabtw(){
+    this.shareit();
+  }
+
+  shareit(){
+    let toast = this.toastCtrl.create({
+      message: 'This feature available soon!',
+      duration: 2500,
+      position:'middle'
+    });
+    toast.present();
+  }
 }

@@ -40,6 +40,17 @@
   </ion-card>
 
     <ion-card>
+      <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-icon name="ios-person-outline" item-start></ion-icon>
+                {{usname}}
+            </ion-item>
+          </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
 
     <ion-card-content>
       <ion-list *ngIf="ucontact != null">
@@ -48,24 +59,31 @@
             {{uccode+''+ucontact}}
         </ion-item>
       </ion-list>
-      <ion-card>
+      <!-- <ion-card>
         <ion-card-content>
           <ion-icon name="ios-barcode-outline" item-start></ion-icon>
           {{uaddress}}
         </ion-card-content>
-      </ion-card>
+      </ion-card> -->
     </ion-card-content>
 
+    
   </ion-card>
+  <br>
+  <button ion-button block color="dark" round (click)="additional()">See additional Info</button>
 
+
+  <ion-fab bottom right>
+    <button ion-fab mini><ion-icon name="create" (click)="createfun()"></ion-icon></button>
+  </ion-fab>
   
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-content>
       <ion-item>
         <ion-icon name="ios-timer-outline" item-start></ion-icon>
           {{ "ProfilePageJoinedat" | translate }} {{ujoin}} 
       </ion-item>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
 </ion-content>

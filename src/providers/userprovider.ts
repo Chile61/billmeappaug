@@ -54,4 +54,24 @@ export class Userprovider {
         );
     });
   }
+
+
+  //serviceconnect.html
+  serviceconnect(lData){
+    lData = JSON.stringify(lData);
+    let url = this.urlstr;
+    console.warn(url);
+    return new Promise((resolve,reject)=>{
+      this.http.post(url+'/findserviceconnect',lData)
+      .map(res=>res.json())
+        .subscribe(
+            data => {
+                resolve(data);
+            },
+            error => {
+                reject(error);
+            }
+        );
+    });
+  }
 }

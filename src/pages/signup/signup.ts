@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ViewController } from 'ionic-angular';
+import { App,ViewController } from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
+
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import  FORM_DIRECTIVES  from '@angular/forms';
@@ -25,6 +27,8 @@ import { MyApp } from '../../app/app.component';
 })
 export class Signup {
 
+  @ViewChild(Nav) nav: Nav;
+
   signup: string = "signin";
 
   public userimg:string;useractive:number;myuserstyle:any;
@@ -43,6 +47,8 @@ export class Signup {
   public regaddress:string;
   public regagree:boolean;
   public regData:any;
+  public regphone:any;
+  public regpasswordconfirm:any;
 
   constructor(
     public navCtrl: NavController, 
@@ -51,7 +57,8 @@ export class Signup {
     public loginServ:Loginprovider,
     public loadCtrl:LoadingController,
     public mp:Mainprovider,
-    public viewCtrl:ViewController
+    public viewCtrl:ViewController,
+    public appCtrl:App
   ) {
         this.iam = "...";
     this.userimg = "assets/images/user.png";this.useractive = 0;
@@ -60,6 +67,7 @@ export class Signup {
     this.myuserstyle = "floralwhite";
     this.myvendorstyle = "floralwhite";
 
+    localStorage.setItem("billmeCandidateType","u");
     this.generateapi();//generate first api key
   }
 
@@ -131,13 +139,14 @@ export class Signup {
   }
 
   DoLogin(){
-    if(this.iam == "..." || this.iam == "" || this.iam == null){
-      this.toastCtrl.create({
-        message:'Should I know who you are?',
-        duration:2000,
-        position:'top'
-      }).present();
-    }else if(this.username == "" || this.username == null){
+    // if(this.iam == "..." || this.iam == "" || this.iam == null){
+    //   this.toastCtrl.create({
+    //     message:'Should I know who you are?',
+    //     duration:2000,
+    //     position:'top'
+    //   }).present();
+    // }else 
+    if(this.username == "" || this.username == null){
       this.toastCtrl.create({
         message:'username is empty',
         duration:2000,
@@ -186,7 +195,8 @@ export class Signup {
             /*loading2.dismiss();
             if(loading2.dismiss() == true){*/
               //this.viewCtrl.dismiss();
-              this.navCtrl.push(MyApp);
+              //this.navCtrl.push(MyApp);
+              this.donecall();
             //}
           },2005);
         }else{
@@ -217,14 +227,16 @@ export class Signup {
   DoRegister(){
     //this.regname = (<HTMLInputElement>document.getElementById('regUsername')).value;
     //console.log(this.regname+" "+(<HTMLInputElement>document.getElementById('regUsername')).value+" p:"+this.regpassword);
-    console.log(this.regagree+" "+this.regaddress+" "+this.reggender+" "+this.regemail+" "+this.regpassword+" "+this.regname);
-    if(this.iam == "..." || this.iam == "" || this.iam == null){
-      this.toastCtrl.create({
-        message:'Should I know who you are?',
-        duration:2000,
-        position:'top'
-      }).present();
-    }else if(this.regname == "" || this.regname == null){
+    //console.log(this.regagree+" "+this.regaddress+" "+this.reggender+" "+this.regemail+" "+this.regpassword+" "+this.regname);
+    console.log(this.regagree+" "+this.regphone+" "+this.regemail+" "+this.regpassword+" "+this.regname+" "+this.regpasswordconfirm);
+    // if(this.iam == "..." || this.iam == "" || this.iam == null){
+    //   this.toastCtrl.create({
+    //     message:'Should I know who you are?',
+    //     duration:2000,
+    //     position:'top'
+    //   }).present();
+    // }else 
+    if(this.regname == "" || this.regname == null){
       this.toastCtrl.create({
         message:'Username is required',duration:2000,position:'top'
       }).present();
@@ -232,37 +244,64 @@ export class Signup {
       this.toastCtrl.create({
         message:'Password is required',duration:2000,position:'top'
       }).present();
-    }else if(this.reggender == "" || this.reggender == null){
+    }else if(this.regpasswordconfirm == "" || this.regpasswordconfirm == null){
       this.toastCtrl.create({
-        message:'Gender is required',duration:2000,position:'top'
+        message:'Confirm Password is required',duration:2000,position:'top'
       }).present();
-    }else if(this.regemail == "" || this.regemail == null){
+    }else if(this.regpasswordconfirm != this.regpassword){
+      this.toastCtrl.create({
+        message:'Hey password is not matched!',duration:2000,position:'top'
+      }).present();
+    }else if(this.regphone == "" || this.regphone == null){
+      this.toastCtrl.create({
+        message:'Phone number is required',duration:2000,position:'top'
+      }).present();
+    }
+    // else if(this.reggender == "" || this.reggender == null){
+    //   this.toastCtrl.create({
+    //     message:'Gender is required',duration:2000,position:'top'
+    //   }).present();
+    // }
+    else if(this.regemail == "" || this.regemail == null){
       this.toastCtrl.create({
         message:'Email is required',duration:2000,position:'top'
       }).present();
-    }else if(this.regaddress == "" || this.regaddress == null){
-      this.toastCtrl.create({
-        message:'Address is required',duration:2000,position:'top'
-      }).present();
-    }else if(this.regagree == false){
+    }
+    // else if(this.regaddress == "" || this.regaddress == null){
+    //   this.toastCtrl.create({
+    //     message:'Address is required',duration:2000,position:'top'
+    //   }).present();
+    // }
+    else if(this.regagree == false){
       this.toastCtrl.create({
         message:'You should agree with terms and condition',duration:2000,position:'top'
       }).present();
-    }else if((this.regpassword).length < 6){
+    }
+    else if((this.regpassword).length < 6 || (this.regpasswordconfirm).length < 6){
       this.toastCtrl.create({
         message:'Password should be 6 chars long!',duration:2000,position:'top'
       }).present();
     }else{
-      console.log(this.regagree+" "+this.regaddress+" "+this.reggender+" "+this.regemail+" "+this.regpassword+" "+this.regname);
+      console.log(this.regagree+" "+this.regphone+" "+this.regemail+" "+this.regpassword+" "+this.regname+" "+this.regpasswordconfirm);
+      // let regData = {
+      //   'agree':this.regagree,
+      //   'username':this.regname,
+      //   'pass':this.regpassword,
+      //   'gender':this.reggender,
+      //   'email':this.regemail,
+      //   'address':this.regaddress,
+      //   'time':new Date()
+      // };
       let regData = {
         'agree':this.regagree,
         'username':this.regname,
         'pass':this.regpassword,
-        'gender':this.reggender,
+        'cnfmpass':this.regpasswordconfirm,
         'email':this.regemail,
-        'address':this.regaddress,
+        'phone':this.regphone,
         'time':new Date()
       };
+      
       let loading = this.loadCtrl.create({ 
         content: 'Registering...'
       });
@@ -291,7 +330,8 @@ export class Signup {
               loading2.present();
             },2005);
             setTimeout(()=>{
-                this.navCtrl.push(MyApp);
+                //this.navCtrl.push(MyApp);
+                this.donecall();
             },4010);
           }else{
             this.toastCtrl.create({
@@ -311,10 +351,20 @@ export class Signup {
             }).present();
         }
       );
+      
     }
   }
   findreg(regData){//server call method
     
+  }
+  donecall(){
+    // this.viewCtrl.dismiss();
+    // this.navCtrl.push(MyApp);
+
+    //this.appCtrl.getRootNav().push(MyApp);
+    //this.nav.setRoot(MyApp);
+
+    this.navCtrl.setRoot(MyApp);
   }
   //END
 

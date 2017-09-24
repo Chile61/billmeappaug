@@ -4,6 +4,7 @@ import { ActionSheetController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { AlertController } from 'ionic-angular';
 
 import { Msgresponse } from '../services/msgresponse';
 
@@ -41,7 +42,8 @@ export class Profile {
     public actionCtrl:ActionSheetController,public up:Userprovider,//public dbs:Dbservice,
     public loadCtrl:LoadingController,
     public camera:Camera,
-    public mr: Msgresponse
+    public mr: Msgresponse,
+    public alertCtrl: AlertController
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -281,5 +283,21 @@ export class Profile {
     );
   }
 
+
+  additional(){
+    let pr = 'Name:'+this.usname+'<br>Joined at '+this.ujoin+'<br>Address is '+this.uaddress;
+    let alert = this.alertCtrl.create({
+      title: this.uname,
+      subTitle: pr,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
+  createfun(){
+    this.toastCtrl.create({
+        message:'Feature available soon!',duration:2000,position:'top'
+    }).present();
+  }
   
 }

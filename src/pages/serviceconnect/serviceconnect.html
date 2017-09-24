@@ -15,9 +15,21 @@
 
 
 <ion-content nopadding>
-  <ion-card>
+
+    <ion-list>
+      <ion-item *ngFor="let d of services">
+        <ion-thumbnail item-start>
+          <img src="{{d.servicelogo?d.servicelogo:'assets/images/logo.png'}}">
+        </ion-thumbnail>
+        <h2>{{d.servicename}}</h2>
+        <p>{{d.servicecompany}}</p>
+        <button ion-button clear item-end (click)="tosee(d)">See</button>
+      </ion-item>
+    </ion-list>
+
+  <!-- <ion-card>
     <ion-card-content>
         {{ "working" | translate }}...
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>

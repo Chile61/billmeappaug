@@ -10,14 +10,20 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>{{ "BillviewpdfPageBills" | translate }} {{pdfname}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="seeinbrowser()">
+        <ion-icon name="ios-eye"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
   <pdf-viewer [src]="pdfSrc" 
               [page]="page" 
-              [original-size]="true" 
+              [original-size]="false" 
+              [render-text]="true"
               style="display: block;"
   ></pdf-viewer>
 
@@ -35,14 +41,17 @@
     <button ion-fab color="danger"><ion-icon name="md-share"></ion-icon></button>
     <ion-fab-list side="top">
       <button ion-fab color="primary" (click)="fabmail()"><ion-icon name="mail"></ion-icon></button>
-      <button ion-fab color="light" (click)="fabgmail()"><ion-icon name="logo-googleplus"></ion-icon></button>
+      <button ion-fab color="danger" (click)="fabgmail()"><ion-icon name="logo-googleplus"></ion-icon></button>
+      <button ion-fab color="light" (click)="fabsms()"><ion-icon name="filing"></ion-icon></button>
     </ion-fab-list>
     <!-- <ion-fab-list side="bottom">
       <button ion-fab color="secondary"><ion-icon name="logo-facebook"></ion-icon></button>
     </ion-fab-list> -->
     <ion-fab-list side="left">
-        <button ion-fab color="secondary" (click)="fabfb()"><ion-icon name="logo-facebook"></ion-icon></button>
-        <button ion-fab color="dark" (click)="fabtw()"><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab color="fbcolor" (click)="fabfb()"><ion-icon name="logo-facebook"></ion-icon></button>
+        <button ion-fab color="twcolor" (click)="fabtw()"><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab color="whtspcolor" (click)="fabwhtsp()"><ion-icon name="logo-whatsapp"></ion-icon></button>
+        <button ion-fab color="light" (click)="fabsendto()"><ion-icon name="send"></ion-icon></button>
     </ion-fab-list>
     <!-- <ion-fab-list side="right">
       

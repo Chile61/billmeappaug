@@ -36,6 +36,8 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { Device } from '@ionic-native/device';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Globalization } from '@ionic-native/globalization';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
@@ -115,7 +117,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PhotoViewer,
     Device,
     Camera,
-    Globalization
+    Globalization,
+    EmailComposer,
+    SocialSharing
   ]
 })
 export class AppModule {}

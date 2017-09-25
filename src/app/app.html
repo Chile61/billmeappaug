@@ -1,8 +1,8 @@
-<ion-menu [content]="content">
+<ion-menu id="myMenu" [content]="content" *ngIf="contentPageMenu">
   <ion-header  color="newtitle" style="background-color:#0372b2;">
     <ion-toolbar class="menutitle" style="background-color:#0372b2;">
       <ion-title class="menutxt"  style="color:#fff;">
-      <img src="{{pic?pic:'assets/images/person.png'}}" class="menuimg"><p class="menuptag">Hi {{billmeuser?billmeuser:'there'}}!</p></ion-title>
+      <img src="{{pic?pic:'assets/images/person.png'}}" class="menuimg"><p class="menuptag">Hi, {{billmefname?billmefname:'there'}}</p></ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -20,5 +20,4 @@
 
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="{{contentPageMenu}}"></ion-nav>

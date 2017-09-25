@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MenuController } from 'ionic-angular';
 import { App,ViewController } from 'ionic-angular';
 import { Nav, Platform } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -31,6 +33,8 @@ export class Signup {
 
   signup: string = "signin";
 
+  contentPageMenu:boolean = false;
+
   public userimg:string;useractive:number;myuserstyle:any;
   public vendorimg:string;vendoractive:number;myvendorstyle:any;
 
@@ -58,8 +62,14 @@ export class Signup {
     public loadCtrl:LoadingController,
     public mp:Mainprovider,
     public viewCtrl:ViewController,
-    public appCtrl:App
+    public appCtrl:App,
+    public alertCtrl: AlertController,
+    public menuCtrl: MenuController
   ) {
+    this.menuCtrl.enable(false, 'myMenu');
+    this.contentPageMenu = false;
+    this.menuCtrl.swipeEnable(false, 'myMenu');
+
         this.iam = "...";
     this.userimg = "assets/images/user.png";this.useractive = 0;
     this.vendorimg = "assets/images/vendor.png";this.vendoractive = 0;
@@ -69,12 +79,24 @@ export class Signup {
 
     localStorage.setItem("billmeCandidateType","u");
     this.generateapi();//generate first api key
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Signup');
     let lang = 'en';
     localStorage.setItem("billmeAppLanguage",lang);
+    this.menuCtrl.enable(false, 'myMenu');
+    this.contentPageMenu = false;
+    this.menuCtrl.swipeEnable(false, 'myMenu');
+    this.menuCtrl.swipeEnable(false);
+    setTimeout(()=>{
+      this.menuCtrl.enable(false, 'myMenu');
+      this.contentPageMenu = false;
+      this.menuCtrl.swipeEnable(false, 'myMenu');
+      this.menuCtrl.swipeEnable(false);
+      console.log("called after 2000");
+    },1000);
   }
 
   finduser(e){
@@ -180,6 +202,11 @@ export class Signup {
           let loading2;
           let ud = JSON.parse(JSON.stringify(ans.data));
           localStorage.setItem("billmeUID",ud.id);
+          let fnname = ud.firstname;
+          if(fnname == "" || fnname == null){
+            fnname = "there";
+          }
+          localStorage.setItem("billmeFirstname",fnname);
           localStorage.setItem("billmeUser",this.username);
           localStorage.setItem("billmePass",this.password);
           localStorage.setItem("billmeUToken",ud.uToken);
@@ -319,6 +346,11 @@ export class Signup {
             let loading2;
             let ud = JSON.parse(JSON.stringify(ans.data));
             localStorage.setItem("billmeUID",ud.id);
+            let fnname = ud.firstname;
+            if(fnname == "" || fnname == null){
+              fnname = "there";
+            }
+            localStorage.setItem("billmeFirstname",fnname);
             localStorage.setItem("billmeUser",this.regname);
             localStorage.setItem("billmePass",this.regpassword);
             localStorage.setItem("billmeIn","Y");
@@ -464,5 +496,40 @@ export class Signup {
   //forgotpassword
   forgotpassword(){
     console.log("doing on that!");
+  }
+
+
+  becomevendor(){
+    let prompt = this.alertCtrl.create({
+      title: 'Become an vendor',
+      message: "Add  a email id to become an vendor",
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'Email address'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: data => {
+            console.log(data);
+            let toast = this.toastCtrl.create({
+              message: 'Ok we contact you soon on email id '+data.email+'!',
+              duration: 2500,
+              position:'middle'
+            });
+            toast.present();
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 }

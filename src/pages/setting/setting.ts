@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { MenuController } from 'ionic-angular';
 
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -26,6 +27,8 @@ import { Msgresponse } from '../services/msgresponse';
 })
 export class Setting {
 
+  contentPageMenu:boolean = false;
+  
   makevisible:boolean;
   titleColor:any;
   piccolors:any;
@@ -44,7 +47,8 @@ export class Setting {
     public alertCtrl:AlertController,
     public translate: TranslateService,
     public msgresponse:Msgresponse,
-    public currencies:Currencies
+    public currencies:Currencies,
+    public menuCtrl: MenuController
     ) {
       if(localStorage.getItem('AppTitleColor')){
         this.titleColor = localStorage.getItem('AppTitleColor');
@@ -60,6 +64,7 @@ export class Setting {
     }
 
   ionViewDidLoad() {
+    this.menuCtrl.swipeEnable(false);
     console.log('ionViewDidLoad SettingPage');
     this.language = localStorage.getItem("billmeAppLanguage");
     this.translate.setDefaultLang(this.language);
@@ -105,7 +110,18 @@ export class Setting {
             localStorage.setItem("billmeIn","N");
             console.log('Proceed clicked');
             //this.navCtrl.push(MyApp);
+            // this.menuCtrl.enable(false, 'myMenu');
+            // this.menuCtrl.swipeEnable(false, 'myMenu');
+            // this.contentPageMenu = false;
+            this.menuCtrl.swipeEnable(false);
             this.navCtrl.setRoot(MyApp);
+            setTimeout(()=>{
+              // this.menuCtrl.enable(false,"myMenu");
+              // this.contentPageMenu = false;
+              // this.menuCtrl.swipeEnable(false, 'myMenu');
+              this.menuCtrl.swipeEnable(false);
+              console.log("called swipe");
+            },1000);
           }
         }
       ]

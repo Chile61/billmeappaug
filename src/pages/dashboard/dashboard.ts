@@ -277,4 +277,25 @@ export class Dashboard {
       this.photoViewer.show(d.billPDF, name, {share: true});
     }
   }
+
+  seepdfdsb(){
+    let im = 'assets/pdf/ca.pdf';//'http://koperkhairne.com/billme_dev/billmemobileapp/storage/app/public/dfgewef/Bills/Bill_22:11:59_2017-08-30.pdf';
+    let liof = im.substr(im.lastIndexOf("/"));
+    let spl = liof.split(".");let pic = spl[1];
+    if(pic == "pdf" || pic == "PDF" || pic == "DOC" || pic == "doc" || pic == "docx" || pic == "DOCX"){
+      //pdf
+      let path = im;
+      let bname = 'asdfsdfdsfsd';
+      this.navCtrl.push(Billviewpdf,{
+        navpath:path,
+        navbillName:bname
+      });
+    }else{
+      //image
+      let name = 'adsfdsfdsf';
+      this.photoViewer.show(im, name, {share: true});
+    }
+  }
+
+  
 }

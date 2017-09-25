@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Globalization } from '@ionic-native/globalization';
+import { MenuController } from 'ionic-angular';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -30,8 +31,11 @@ export class MyApp {
   rootPage: any;
 
   billmeuser:string;
+  billmefname:string;
 
   year:any;
+
+  contentPageMenu:boolean = false;
 
   pages: Array<{title: string, component: any,icon:string}>;
 
@@ -41,7 +45,8 @@ export class MyApp {
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
     public globalization: Globalization,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public menuCtrl: MenuController
   ) {
     this.initializeApp();
 
@@ -57,15 +62,25 @@ export class MyApp {
     if(localStorage.getItem('billmeIn') == "" || localStorage.getItem('billmeIn') == "N" ||  localStorage.getItem('billmeIn') == null || !localStorage.getItem('billmeIn')){
       if(localStorage.getItem('billmeSeenSlider') == "" || localStorage.getItem('billmeSeenSlider') == "N" ||  localStorage.getItem('billmeSeenSlider') == null || !localStorage.getItem('billmeSeenSlider')){
         this.rootPage = Homeslider;
+        this.contentPageMenu = false;
       }else{
         this.rootPage = Signup;
+        this.contentPageMenu = false;
       }
+      this.menuCtrl.swipeEnable(false);
+      // this.menuCtrl.enable(false, 'myMenu');
+      // this.menuCtrl.swipeEnable(false, 'myMenu');
       this.pic = "assets/images/person.png";
     }
     else{
       this.rootPage = Dashboard;//Profile;//
+      this.contentPageMenu = true;
+      // this.menuCtrl.enable(true, 'myMenu');
+      // this.menuCtrl.swipeEnable(true, 'myMenu');
+      this.menuCtrl.swipeEnable(true);
       this.pic = localStorage.getItem("billmeProfilePic");
       this.billmeuser = localStorage.getItem("billmeUser");
+      this.billmefname = localStorage.getItem("billmeFirstname");
       setTimeout(()=>{
         this.pic = localStorage.getItem("billmeProfilePic");
       },2500);
@@ -96,6 +111,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      // this.menuCtrl.enable(false, 'myMenu');
+      // this.menuCtrl.swipeEnable(false, 'myMenu');
       this.pic = "assets/images/person.png";
       //localStorage.setItem("appUrl","http://www.podargroup.com/billmemobileapp/api/mobile");
       localStorage.setItem("appUrl","http://www.koperkhairne.com/billme_dev/billmemobileapp/api/mobile");

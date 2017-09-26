@@ -136,7 +136,7 @@ export class Billviewpdf {
             }).catch(() => {
               // Error!
             });
-          }
+          } 
         }
       ]
     });

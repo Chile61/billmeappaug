@@ -1,0 +1,83 @@
+<!--
+  Generated template for the ProfileditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="Profile" color="{{titleColor}}">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ "ProfilePageTitle" | translate }} {{uname}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding>
+
+  <div class="profileform">
+    
+    <ion-list class="ionlist2">
+    
+      <ion-item>
+        <ion-label floating>User name</ion-label>
+        <ion-input type="text" id="username" disabled="true" [(ngModel)]="uname" #username ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" id="email" disabled="true" [(ngModel)]="uemail" #email ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>First name</ion-label>
+        <ion-input type="text" id="firstname" [(ngModel)]="ufname" #firstname ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Last name</ion-label>
+        <ion-input type="text" id="lastname" [(ngModel)]="ulname" #lastname ngDefaultControl></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list radio-group class="rgpgender" [(ngModel)]="ugender" ngDefaultControl>
+        <ion-list-header class="rgpil">
+          Gender
+        </ion-list-header>
+          <ion-grid class="gig" class="rgpgig1g">
+            <ion-row class="gir">
+              <ion-col col-6 class="giric1">
+              <ion-item>
+                <ion-label>Male</ion-label>
+                <ion-radio value="Male" ></ion-radio>
+              </ion-item>
+              </ion-col>
+              <ion-col col-6 class="giric2">
+              <ion-item>
+                <ion-label>Female</ion-label>
+                <ion-radio value="Female"></ion-radio>
+              </ion-item>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-list>
+
+    <ion-list class="ionlist2">
+      
+      <ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-input type="text" id="address" [(ngModel)]="uaddress" #address ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contact</ion-label>
+        <ion-input type="text" id="contact" [(ngModel)]="ucontact" #contact ngDefaultControl></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+  <div>
+      <button ion-button block large outline color="loginbtn" (click)="editprofile()">{{ "Edit profile" }}</button>
+  </div>
+</ion-content>

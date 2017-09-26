@@ -58,6 +58,7 @@ export class Dashboard {
   }
 
   ionViewDidLoad() {
+    this.pic = localStorage.getItem("billmeProfilePic");
     console.log('ionViewDidLoad DashboardPage HomePage');
     this.billmeuser = localStorage.getItem("billmeUser");
     this.loadData();

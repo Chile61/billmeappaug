@@ -8,6 +8,8 @@ import { AlertController } from 'ionic-angular';
 
 import { Msgresponse } from '../services/msgresponse';
 
+import { Profiledit } from '../profiledit/profiledit';
+
 import * as moment from 'moment';
 //import { service } from '../services/service';
 //import { Http,Response } from '@angular/http';
@@ -30,7 +32,9 @@ export class Profile {
   d:any;
   titleColor:string;
   profile:any;
-  uname:string;usname:string;username:string;uemail:any;uaddress:any;ucontact:any;uccode:any;
+  uname:string;usname:string;username:string;uemail:any;uaddress:any;
+  ucontact:any;uccode:any;
+  ufname:any;ulname:any;
   ujoin:any;ugender:string;utoken:any;upic:any;ucreated:any;
 
   errorNetwork:any;
@@ -86,8 +90,10 @@ export class Profile {
         console.log(d.username);
         console.log(dt.data.username);
         this.profile = dt.data;
-        this.uname = d.username;
+        this.uname = d.username || "there";
         this.usname = d.firstname?d.firstname:""+" "+d.lastname?d.lastname:"";
+        this.ufname = d.firstname;
+        this.ulname = d.lastname;
         this.username = d.username;
         this.uemail = d.email;
         this.uaddress = d.address;
@@ -295,9 +301,32 @@ export class Profile {
   }
 
   createfun(){
-    this.toastCtrl.create({
-        message:'Feature available soon!',duration:2000,position:'top'
-    }).present();
+    let uname = this.uname;
+    let ufname = this.ufname;
+    let ulname = this.ulname;
+    let uemail = this.uemail;
+    let uaddress = this.uaddress;
+    let ucontact = this.ucontact;
+    let uccode = this.uccode;
+    let ujoin = this.ujoin;
+    let ugender = this.ugender;
+    let utoken = this.utoken;
+    let ucreated = this.ucreated;
+    let upic = this.upic;
+    this.navCtrl.push(Profiledit,{
+      uname:uname,
+      ufname:ufname,
+      ulname:ulname,
+      uemail:uemail,
+      uaddress:uaddress,
+      ucontact:ucontact,
+      uccode:uccode,
+      ujoin:ujoin,
+      ugender:ugender,
+      utoken:utoken,
+      ucreated:ucreated,
+      upic:upic
+    });
   }
   
 }

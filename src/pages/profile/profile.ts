@@ -32,7 +32,7 @@ export class Profile {
   d:any;
   titleColor:string;
   profile:any;
-  uname:string;usname:string;username:string;uemail:any;uaddress:any;
+  uname:string = "there";usname:string = "!";username:string;uemail:any;uaddress:any;udob:any;
   ucontact:any;uccode:any;
   ufname:any;ulname:any;
   ujoin:any;ugender:string;utoken:any;upic:any;ucreated:any;
@@ -96,6 +96,7 @@ export class Profile {
         this.ulname = d.lastname;
         this.username = d.username;
         this.uemail = d.email;
+        this.udob = d.dob;
         this.uaddress = d.address;
         this.ucontact = d.contact;
         this.uccode = d.phoneCode;
@@ -313,6 +314,7 @@ export class Profile {
     let utoken = this.utoken;
     let ucreated = this.ucreated;
     let upic = this.upic;
+    let udob = this.udob;
     this.navCtrl.push(Profiledit,{
       uname:uname,
       ufname:ufname,
@@ -325,7 +327,8 @@ export class Profile {
       ugender:ugender,
       utoken:utoken,
       ucreated:ucreated,
-      upic:upic
+      upic:upic,
+      udob:udob
     });
   }
   

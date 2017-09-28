@@ -14,20 +14,21 @@
 </ion-header>
 
 
-<ion-content no-padding>
+<ion-content padding>
 
   <div class="profileform">
     
     <ion-list class="ionlist2">
     
       <ion-item>
-        <ion-label floating>User name</ion-label>
-        <ion-input type="text" id="username" disabled="true" [(ngModel)]="uname" #username ngDefaultControl></ion-input>
-      </ion-item>
-      <ion-item>
         <ion-label floating>Email</ion-label>
         <ion-input type="text" id="email" disabled="true" [(ngModel)]="uemail" #email ngDefaultControl></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label floating>User name</ion-label>
+        <ion-input type="text" id="username" disabled="false" [(ngModel)]="uname" #username ngDefaultControl></ion-input>
+      </ion-item>
+      
 
       <ion-item>
         <ion-label floating>First name</ion-label>
@@ -36,6 +37,11 @@
       <ion-item>
         <ion-label floating>Last name</ion-label>
         <ion-input type="text" id="lastname" [(ngModel)]="ulname" #lastname ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date Of Birth</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="udob"></ion-datetime>
       </ion-item>
 
     </ion-list>
@@ -78,6 +84,6 @@
   </div>
 
   <div>
-      <button ion-button block large outline color="loginbtn" (click)="editprofile()">{{ "Edit profile" }}</button>
+      <button ion-button block large outline color="loginbtn" (click)="editprofile()">{{ "Update profile" }}</button>
   </div>
 </ion-content>

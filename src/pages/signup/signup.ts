@@ -15,6 +15,9 @@ import { Mainprovider } from '../../providers/mainprovider';
 //import { Dashboard } from '../dashboard/dashboard';
 import { MyApp } from '../../app/app.component';
 
+import { Signupcountries } from '../signupcountries/signupcountries';
+
+
 /**
  * Generated class for the Signup page.
  *
@@ -53,6 +56,8 @@ export class Signup {
   public regData:any;
   public regphone:any;
   public regpasswordconfirm:any;
+  public countrychoosen:any;
+  public countrychoosencode:any;
 
   constructor(
     public navCtrl: NavController, 
@@ -90,6 +95,8 @@ export class Signup {
     this.contentPageMenu = false;
     this.menuCtrl.swipeEnable(false, 'myMenu');
     this.menuCtrl.swipeEnable(false);
+    this.countrychoosen = localStorage.getItem("BillMeUserCountryName");
+    this.countrychoosencode = localStorage.getItem("BillMeUserCountryCode");
     setTimeout(()=>{
       this.menuCtrl.enable(false, 'myMenu');
       this.contentPageMenu = false;
@@ -97,6 +104,11 @@ export class Signup {
       this.menuCtrl.swipeEnable(false);
       console.log("called after 2000");
     },1000);
+  }
+
+  chooseCountry(){
+    //this.countrychoosen = 
+    this.navCtrl.push(Signupcountries,{});
   }
 
   finduser(e){

@@ -25,6 +25,7 @@ import { Walletbalance } from '../pages/walletbalance/walletbalance';
 import { Walletexpenditure } from '../pages/walletexpenditure/walletexpenditure';
 import { Walletpurchase } from '../pages/walletpurchase/walletpurchase';
 import { Profiledit } from '../pages/profiledit/profiledit';
+import { Signupcountries } from '../pages/signupcountries/signupcountries';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -70,7 +71,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Billviewpdf,
     PdfViewerComponent,
     Walletbalance,Walletexpenditure,Walletpurchase,
-    Profiledit
+    Profiledit,
+    Signupcountries
   ],
   imports: [
     HttpModule,
@@ -106,7 +108,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Serviceconnect,
     Billviewpdf,
     Walletbalance,Walletexpenditure,Walletpurchase,
-    Profiledit
+    Profiledit,
+    Signupcountries
   ],
   providers: [
     StatusBar,

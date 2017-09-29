@@ -75,6 +75,12 @@
         <ion-input type="text" id="address" [(ngModel)]="uaddress" #address ngDefaultControl></ion-input>
       </ion-item>
       <ion-item>
+          <ion-label>{{ "Country" }}</ion-label>
+          <ion-select [(ngModel)]="countrychoosen" okText="{{'SelectDone'|translate}}" cancelText="{{'SelectCancel'|translate}}" (ngModelChange)="chooseCountry()">
+            <ion-option *ngFor="let l of ccountries" value="{{l.code}}">{{l.country}}</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
         <ion-label floating>Contact</ion-label>
         <ion-input type="text" id="contact" [(ngModel)]="ucontact" #contact ngDefaultControl></ion-input>
       </ion-item>

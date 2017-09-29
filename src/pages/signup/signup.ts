@@ -12,6 +12,8 @@ import  FORM_DIRECTIVES  from '@angular/forms';
 import { Loginprovider } from '../../providers/loginprovider';
 import { Mainprovider } from '../../providers/mainprovider';
 
+import { Ccountries } from '../services/ccountries';
+
 //import { Dashboard } from '../dashboard/dashboard';
 import { MyApp } from '../../app/app.component';
 
@@ -28,7 +30,7 @@ import { Signupcountries } from '../signupcountries/signupcountries';
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
-  providers:[Loginprovider,Mainprovider]
+  providers:[Loginprovider,Mainprovider,Ccountries]
 })
 export class Signup {
 
@@ -56,6 +58,7 @@ export class Signup {
   public regData:any;
   public regphone:any;
   public regpasswordconfirm:any;
+  public ccountries:any;
   public countrychoosen:any;
   public countrychoosencode:any;
 
@@ -69,7 +72,8 @@ export class Signup {
     public viewCtrl:ViewController,
     public appCtrl:App,
     public alertCtrl: AlertController,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    public CC:Ccountries
   ) {
     this.menuCtrl.enable(false, 'myMenu');
     this.contentPageMenu = false;
@@ -89,6 +93,7 @@ export class Signup {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Signup');
+    this.ccountries = this.CC.listallcountries();
     let lang = 'en';
     localStorage.setItem("billmeAppLanguage",lang);
     this.menuCtrl.enable(false, 'myMenu');
@@ -107,8 +112,9 @@ export class Signup {
   }
 
   chooseCountry(){
-    //this.countrychoosen = 
-    this.navCtrl.push(Signupcountries,{});
+    let ccode = this.countrychoosen;
+    console.log(ccode);
+    //this.navCtrl.push(Signupcountries,{});
   }
 
   finduser(e){
@@ -311,7 +317,7 @@ export class Signup {
     //     message:'Address is required',duration:2000,position:'top'
     //   }).present();
     // }
-    else if(this.regagree == false){
+    else if( !this.regagree ){
       this.toastCtrl.create({
         message:'You should agree with terms and condition',duration:2000,position:'top'
       }).present();
@@ -320,7 +326,13 @@ export class Signup {
       this.toastCtrl.create({
         message:'Password should be 6 chars long!',duration:2000,position:'top'
       }).present();
-    }else{
+    }
+    else if(this.countrychoosen == "" || this.countrychoosen == null){
+      this.toastCtrl.create({
+        message:'Country is required',duration:2000,position:'top'
+      }).present();
+    }
+    else{
       console.log(this.regagree+" "+this.regphone+" "+this.regemail+" "+this.regpassword+" "+this.regname+" "+this.regpasswordconfirm);
       // let regData = {
       //   'agree':this.regagree,
@@ -338,8 +350,10 @@ export class Signup {
         'cnfmpass':this.regpasswordconfirm,
         'email':this.regemail,
         'phone':this.regphone,
+        'phonecode':this.countrychoosen,
         'time':new Date()
       };
+      
       
       let loading = this.loadCtrl.create({ 
         content: 'Registering...'

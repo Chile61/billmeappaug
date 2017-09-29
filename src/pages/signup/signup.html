@@ -121,8 +121,7 @@
         <ion-label floating>Contact</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>-->
-      </ion-list>
-       <br>
+      <!-- </ion-list> -->
       <!-- <ion-list radio-group class="rgpgender" [(ngModel)]="reggender" ngDefaultControl>
     <ion-list-header class="rgpil">
       Gender
@@ -145,18 +144,22 @@
     </ion-grid>
   </ion-list> -->
 
-    <ion-list class="ionlist2">
+    <!-- <ion-list class="ionlist2"> -->
       <ion-item>
         <ion-label floating>Email Address</ion-label>
         <ion-input type="email" [(ngModel)]="regemail" ngDefaultControl></ion-input>
       </ion-item>
-
-      <ion-item (click)="chooseCountry()">
-        <ion-icon name='planet' item-start></ion-icon>
+      <br>
+      <ion-item>
+        <!-- <ion-icon name='planet' item-start></ion-icon>
         Country
         <ion-note item-end>
         {{countrychoosen?countrychoosen:''}}
-        </ion-note>
+        </ion-note> --> 
+        <ion-label>{{ "Country" }}</ion-label>
+        <ion-select [(ngModel)]="countrychoosen" okText="{{'SelectDone'|translate}}" cancelText="{{'SelectCancel'|translate}}" (ngModelChange)="chooseCountry()">
+          <ion-option *ngFor="let l of ccountries" value="{{l.code}}">{{l.country}}</ion-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label floating>Phone no</ion-label>

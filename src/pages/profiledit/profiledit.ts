@@ -5,6 +5,7 @@ import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { Msgresponse } from '../services/msgresponse';
+import { Ccountries } from '../services/ccountries';
 
 import { Userprovider } from '../../providers/userprovider';
 
@@ -20,7 +21,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'page-profiledit',
   templateUrl: 'profiledit.html',
-  providers:[Userprovider,Msgresponse]
+  providers:[Userprovider,Msgresponse,Ccountries]
 })
 export class Profiledit {
 
@@ -31,6 +32,8 @@ export class Profiledit {
   ucontact:any;uccode:any;udob:any;
   ufname:any;ulname:any;
   ujoin:any;ugender:string;utoken:any;upic:any;ucreated:any;
+  public ccountries:any;
+  public countrychoosen:any;
 
   errorNetwork:any;
   errorNetworkUnavailable:any;
@@ -42,6 +45,7 @@ export class Profiledit {
     public mr: Msgresponse,
     public alertCtrl: AlertController,
     public up:Userprovider,
+    public CC:Ccountries
   ) {
     if(localStorage.getItem('AppTitleColor')){
       this.titleColor = localStorage.getItem('AppTitleColor');
@@ -59,6 +63,7 @@ export class Profiledit {
     this.uaddress = this.navParams.get("uaddress");
     this.ucontact = this.navParams.get("ucontact");
     this.uccode = this.navParams.get("uccode");
+    this.countrychoosen = this.navParams.get("uccode");
     this.ujoin = this.navParams.get("ujoin");
     this.ugender = this.navParams.get("ugender");
     this.utoken = this.navParams.get("utoken");
@@ -67,6 +72,7 @@ export class Profiledit {
     this.udob = this.navParams.get("udob");
     console.log(this.uname);
     console.log(this.converttoDate(this.udob));
+    this.ccountries = this.CC.listallcountries();
     this.errorNetwork = this.mr.callErrorNetwork();
     this.errorNetworkUnavailable = this.mr.callErrorNetworkUnavailable();
     console.log('ionViewDidLoad ProfileditPage');
@@ -83,6 +89,7 @@ export class Profiledit {
       uaddress:this.uaddress,
       ucontact:this.ucontact,
       udob:this.udob,
+      phonecode:this.countrychoosen,
       utoken:localStorage.getItem("billmeUToken")
     };
     let loading = this.loadCtrl.create({

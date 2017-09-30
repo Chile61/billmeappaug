@@ -64,6 +64,11 @@ export class Profile {
       //this.postPic2();
   }
 
+  ionViewWillEnter() { // THERE IT IS!!!
+      //console.log("loaded");
+      this.loadProfile();
+  }
+
   ionViewDidLoad() {
     this.errorNetwork = this.mr.callErrorNetwork();
     this.errorNetworkUnavailable = this.mr.callErrorNetworkUnavailable();

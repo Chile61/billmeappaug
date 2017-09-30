@@ -55,6 +55,8 @@ export class Profiledit {
     }
   }
 
+  
+
   ionViewDidLoad() {
     this.uname = this.navParams.get("uname");
     this.ufname = this.navParams.get("ufname");

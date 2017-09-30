@@ -54,6 +54,42 @@ export class Loginprovider {
     });
   }
 
+  registerverify(regData){
+    regData = JSON.stringify(regData);
+    this.url = localStorage.getItem('appUrl')+"/"+localStorage.getItem('ApiKey')+"/"+localStorage.getItem("billmeCandidateType");
+    let url = this.url;
+    return new Promise((resolve,reject)=>{
+      this.http.post(url+'/newregisterverify',regData)
+      .map(res=>res.json())
+      .subscribe(
+        data=>{
+          resolve(data);
+        },
+        error=>{
+          reject(error);
+        }
+      );
+    });
+  }
+
+  newregisterresending(regData){
+    regData = JSON.stringify(regData);
+    this.url = localStorage.getItem('appUrl')+"/"+localStorage.getItem('ApiKey')+"/"+localStorage.getItem("billmeCandidateType");
+    let url = this.url;
+    return new Promise((resolve,reject)=>{
+      this.http.post(url+'/newregisterresending',regData)
+      .map(res=>res.json())
+      .subscribe(
+        data=>{
+          resolve(data);
+        },
+        error=>{
+          reject(error);
+        }
+      );
+    });
+  }
+
   getprofile(pData){
     pData = JSON.stringify(pData);
     return new Promise((resolve,reject)=>{

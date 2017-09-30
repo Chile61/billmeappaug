@@ -113,7 +113,10 @@ export class MyApp {
       this.splashScreen.hide();
       // this.menuCtrl.enable(false, 'myMenu');
       // this.menuCtrl.swipeEnable(false, 'myMenu');
-      this.pic = "assets/images/person.png";
+      //this.pic = "assets/images/person.png";
+      this.pic = localStorage.getItem("billmeProfilePic");
+      this.billmeuser = localStorage.getItem("billmeUser");
+      this.billmefname = localStorage.getItem("billmeFirstname");
       //localStorage.setItem("appUrl","http://www.podargroup.com/billmemobileapp/api/mobile");
       localStorage.setItem("appUrl","http://www.koperkhairne.com/billme_dev/billmemobileapp/api/mobile");
       this.globalization.getPreferredLanguage()

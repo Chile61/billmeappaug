@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 import { App,ViewController } from 'ionic-angular';
@@ -59,8 +60,16 @@ export class Signup {
   public regphone:any;
   public regpasswordconfirm:any;
   public ccountries:any;
-  public countrychoosen:any;
+  public countrychoosen:any = "";
   public countrychoosencode:any;
+
+  public processsignup:boolean = true;
+  public processcode:boolean = false;
+  public processdone:boolean = false;
+
+  public regregkey:number;
+
+  public processcodeform:any;
 
   constructor(
     public navCtrl: NavController, 
@@ -73,7 +82,8 @@ export class Signup {
     public appCtrl:App,
     public alertCtrl: AlertController,
     public menuCtrl: MenuController,
-    public CC:Ccountries
+    public CC:Ccountries,
+    public formBuilder: FormBuilder
   ) {
     this.menuCtrl.enable(false, 'myMenu');
     this.contentPageMenu = false;
@@ -89,6 +99,9 @@ export class Signup {
     localStorage.setItem("billmeCandidateType","u");
     this.generateapi();//generate first api key
 
+    this.processcodeform = formBuilder.group({
+      regregkey:['', Validators.compose([Validators.maxLength(6), Validators.pattern('[0-9]*'), Validators.required])]
+    });
   }
 
   ionViewDidLoad() {
@@ -227,6 +240,7 @@ export class Signup {
           localStorage.setItem("billmeFirstname",fnname);
           localStorage.setItem("billmeUser",this.username);
           localStorage.setItem("billmePass",this.password);
+          localStorage.setItem("billmeUserEmail",ud.email);
           localStorage.setItem("billmeUToken",ud.uToken);
           let pic =  ud.profilePic?ud.profilePic:'assets/images/person.png';
           localStorage.setItem("billmeProfilePic",pic);
@@ -244,6 +258,42 @@ export class Signup {
               this.donecall();
             //}
           },2005);
+        }else if(ans.status == "already"){
+          this.toastCtrl.create({
+            message:ans.message,duration:2000,position:'top'
+          }).present();
+
+          let ud = JSON.parse(JSON.stringify(ans.data));
+          localStorage.setItem("billmeUID",ud.id);
+          let fnname = ud.firstname;
+          if(fnname == "" || fnname == null){
+            fnname = "there";
+          }
+          localStorage.setItem("billmeFirstname",fnname);
+          localStorage.setItem("billmeUser",this.username);
+          localStorage.setItem("billmePass",this.password);
+          localStorage.setItem("billmeUserEmail",ud.email);
+          this.regemail = ud.email;
+          localStorage.setItem("billmeUToken",ud.uToken);
+          let pic =  ud.profilePic?ud.profilePic:'assets/images/person.png';
+          localStorage.setItem("billmeProfilePic",pic);
+
+          let loading2;
+          setTimeout(()=>{
+            this.loadCtrl.create({
+              content: 'Resending Registration Key...',
+              duration: 1000
+            }).present();
+            this.resendmailfromlogin();
+          },2500);
+          
+          
+          
+          setTimeout(()=>{
+            this.processsignup = false;
+            this.processcode = true;
+            this.processdone = false;
+          },3010);
         }else{
           this.toastCtrl.create({
             message:ans.message,
@@ -302,6 +352,11 @@ export class Signup {
         message:'Phone number is required',duration:2000,position:'top'
       }).present();
     }
+    else if((this.regphone).toString().length != 10){
+      this.toastCtrl.create({
+        message:'Phone number is invalid',duration:2000,position:'top'
+      }).present();
+    }
     // else if(this.reggender == "" || this.reggender == null){
     //   this.toastCtrl.create({
     //     message:'Gender is required',duration:2000,position:'top'
@@ -354,6 +409,9 @@ export class Signup {
         'time':new Date()
       };
       
+      // let loading = this.loadCtrl.create({ 
+      //   content: 'Registering...'
+      // });
       
       let loading = this.loadCtrl.create({ 
         content: 'Registering...'
@@ -378,19 +436,33 @@ export class Signup {
             }
             localStorage.setItem("billmeFirstname",fnname);
             localStorage.setItem("billmeUser",this.regname);
+            localStorage.setItem("billmeUserEmail",this.regemail);
             localStorage.setItem("billmePass",this.regpassword);
-            localStorage.setItem("billmeIn","Y");
+            localStorage.setItem("billmeUToken",ud.uToken);
+            let pic =  ud.profilePic?ud.profilePic:'assets/images/person.png';
+            localStorage.setItem("billmeProfilePic",pic);
+            //localStorage.setItem("billmeIn","Y");
+            // setTimeout(()=>{
+            //   loading2 = this.loadCtrl.create({
+            //     content: 'Finalizing your assets...',
+            //     duration: 2000
+            //   });
+            //   loading2.present();
+            // },2005);
+            // setTimeout(()=>{
+            //     //this.navCtrl.push(MyApp);
+            //     this.donecall();
+            // },4010);
+            //code to verify
             setTimeout(()=>{
-              loading2 = this.loadCtrl.create({
-                content: 'Finalizing your assets...',
-                duration: 2000
-              });
-              loading2.present();
-            },2005);
-            setTimeout(()=>{
-                //this.navCtrl.push(MyApp);
-                this.donecall();
-            },4010);
+              this.processsignup = false;
+              this.processcode = true;
+              this.processdone = false;
+              loading.dismiss();
+              setTimeout(()=>{
+                this.regregkey = ans.regkey;
+              },8000);
+            },2000);
           }else{
             this.toastCtrl.create({
               message:ans.message,
@@ -425,6 +497,170 @@ export class Signup {
     this.navCtrl.setRoot(MyApp);
   }
   //END
+
+  //getcode and verify
+  verifysignup(){
+    
+    if(this.regregkey == undefined){
+      this.toastCtrl.create({
+        message:'Registration key required',duration:2000,position:'top'
+      }).present();
+    }else if(this.regregkey == 0){
+      this.toastCtrl.create({
+        message:'Registration key required',duration:2000,position:'top'
+      }).present();
+    }else if((this.regregkey).toString().length != 6){
+      this.toastCtrl.create({
+        message:'Registration key is invalid',duration:2000,position:'top'
+      }).present();
+    }else{
+      //verify from web and confirm
+      let verifydata = {
+        'uid':localStorage.getItem("billmeUID"),
+        'code':this.regregkey,
+        'time':new Date(),
+        'email':localStorage.getItem("billmeUserEmail"),
+        'from':'registration'
+      };
+      let loading = this.loadCtrl.create({ 
+        content: 'Verifying...'
+      });
+      this.loginServ.registerverify(verifydata)
+      .then(
+        (res)=>{
+          loading.dismiss();
+          console.info(JSON.stringify(res));
+          let ans = JSON.parse(JSON.stringify(res));
+          if(ans.status == "success"){
+            console.log(this.regregkey);
+            this.processsignup = false;
+            this.processcode = false;
+            this.processdone = true;
+            this.gotohome();
+          }else{
+            this.toastCtrl.create({
+              message:ans.message,duration:2000,position:'top'
+            }).present();
+          }
+        },
+        error=>{ 
+          loading.dismiss();
+          this.toastCtrl.create({
+            message:'Network is unavailable',duration:2000,position:'top'
+          }).present();
+        }
+      );
+      
+    }
+  }
+  //end
+
+  //goto home finally
+  gotohome(){
+    localStorage.setItem("billmeIn","Y");
+    let loading2;
+    setTimeout(()=>{
+      loading2 = this.loadCtrl.create({
+        content: 'Finalizing your assets...',
+        duration: 2000
+      });
+      loading2.present();
+    },2005);
+    setTimeout(()=>{
+        //this.navCtrl.push(MyApp);
+        this.donecall();
+        console.log("homepage");
+    },4010);
+  }
+  //end
+
+  backtosignup(){
+    this.processsignup = true;
+    this.processdone = false;
+    this.processcode = false;
+  }
+
+  //resendmail()
+  resendmail(){
+    let regData = {
+      'uid':localStorage.getItem("billmeUID"),
+      'email':this.regemail,
+      'from':'registration',
+      'time':new Date()
+    };
+    
+    let loading = this.loadCtrl.create({ 
+      content: 'Sending...'
+    });
+    this.loginServ.newregisterresending(regData).then(
+      (res)=>{
+        loading.dismiss();
+        console.info(JSON.stringify(res));
+        let ans = JSON.parse(JSON.stringify(res));
+        if(ans.status == "success"){
+          this.toastCtrl.create({
+            message:ans.message,
+            duration:2000,
+            position:'middle'
+          }).present();
+          setTimeout(()=>{
+            this.regregkey = ans.regkey;
+          },10000);
+        }else{
+          this.toastCtrl.create({
+            message:ans.message,duration:2000,position:'top'
+          }).present();
+        }
+      },
+      error=>{ 
+        loading.dismiss();
+        this.toastCtrl.create({
+          message:'Network is unavailable',duration:2000,position:'top'
+        }).present();
+      }
+    );
+      
+  }
+
+  resendmailfromlogin(){
+    let regData = {
+      'uid':localStorage.getItem("billmeUID"),
+      'email':localStorage.getItem("billmeUserEmail"),
+      'from':'registration',
+      'time':new Date()
+    };
+    
+    
+    this.loginServ.newregisterresending(regData).then(
+      (res)=>{
+        
+        console.info(JSON.stringify(res));
+        let ans = JSON.parse(JSON.stringify(res));
+        if(ans.status == "success"){
+          this.toastCtrl.create({
+            message:ans.message,
+            duration:2000,
+            position:'middle'
+          }).present();
+          setTimeout(()=>{
+            this.regregkey = ans.regkey;
+          },10000);
+        }else{
+          this.toastCtrl.create({
+            message:ans.message,duration:2000,position:'top'
+          }).present();
+        }
+      },
+      error=>{ 
+        
+        this.toastCtrl.create({
+          message:'Network is unavailable',duration:2000,position:'top'
+        }).present();
+      }
+    );
+      
+  }
+
 
   //generatekey
   generateapi(){

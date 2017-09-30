@@ -148,4 +148,10 @@ export class Profiledit {
     let ans = moment(new Date(d)).format("YYYY-MM-DD");
     return ans;
   }
+
+  chooseCountry(){
+    let ccode = this.countrychoosen;
+    console.log(ccode);
+    //this.navCtrl.push(Signupcountries,{});
+  }
 }

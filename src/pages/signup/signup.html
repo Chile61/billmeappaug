@@ -22,6 +22,7 @@
         margin: 2%;">
     </div>
 
+<div *ngIf="processsignup">
   <div padding> 
     <ion-segment [(ngModel)]="signup">
       <ion-segment-button value="signin">
@@ -163,7 +164,7 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Phone no</ion-label>
-        <ion-input type="text" [(ngModel)]="regphone" ngDefaultControl></ion-input>
+        <ion-input type="number" [(ngModel)]="regphone" ngDefaultControl></ion-input>
       </ion-item>
 
       
@@ -217,5 +218,45 @@
   <div>
       <button ion-button block large outline color="dark" (click)="becomevendor()">{{ "Become an vendor" }}</button>
   </div>
-
+</div>
+<div *ngIf="processcode" class="processcode">
+    <br><br>
+    <p class="pcodetext">Get your registration key from your mailbox</p>
+    <br><br>
+    <form [formGroup]="processcodeform">
+    <ion-list>
+      <!-- <ion-item> 
+        <ion-label floating>Registration Key</ion-label>
+        <ion-input type="number" [(ngModel)]="regregkey" ngDefaultControl></ion-input>
+      </ion-item> -->
+      <ion-item class="pcodeionitem">
+        <ion-label><ion-icon name="key"></ion-icon></ion-label>
+        <ion-input class="pcodeinputkey" formControlName="regregkey" placeholder="Registration Key" type="number" [(ngModel)]="regregkey" maxLength="6" ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item class="pcodemessage" *ngIf="!processcodeform.controls.regregkey.valid  && (processcodeform.controls.regregkey.dirty)">
+          <p>Please enter a valid registration key.</p>
+      </ion-item>
+    </ion-list>
+    <br><br><br><br>
+    <button ion-button large full color="loginbtn" class="pcodeverify" (click)="verifysignup()">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      &nbsp;&nbsp;Verify
+    </button>
+    </form>
+    <br><br>
+    <div class="pcodedivback">
+      <button ion-button outline small (click)="resendmail()">Mail not received? Resend here.</button>
+        <br>
+      <button ion-button small round color="loginbtn" class="pcodeback" (click)="backtosignup()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+        &nbsp;&nbsp;Back To Login
+      </button> 
+    </div>
+  <br>
+</div> 
+<div *ngIf="processdone" class="processdone">
+  <img src="assets/images/ticksuccess.png" class="pdoneimg">
+  <br>
+  <h4 class="pdoneh4">Finalyzing billme...</h4>
+</div>
 </ion-content>

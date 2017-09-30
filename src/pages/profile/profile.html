@@ -32,7 +32,7 @@
         </ion-item>
         <ion-item>
           <ion-icon name="ios-person-outline" item-start></ion-icon>
-            {{ugender}}
+            {{ugender?ugender:'Edit Profile To Add Gender'}}
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -44,7 +44,7 @@
           <ion-list>
             <ion-item>
               <ion-icon name="ios-person-outline" item-start></ion-icon>
-                {{usname}}
+                {{usname?usname:'Provide your name'}}
             </ion-item>
 
             <!-- <ion-item>
